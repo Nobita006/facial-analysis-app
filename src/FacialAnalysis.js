@@ -1,46 +1,50 @@
 import React, { useState } from 'react';
-import Result from './Result';
+import axios from 'axios';
 
-function FacialAnalysis() {
+const FacialAnalysis = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [analysisResult, setAnalysisResult] = useState(null);
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     setSelectedImage(URL.createObjectURL(file));
-    performAnalysis(file);
   };
 
-  const performAnalysis = (file) => {
-    // Here, you can implement the logic to send the image file to the backend for analysis
-    // and receive the analysis result and recommended products.
-    // For now, let's assume we have a dummy result and recommended products.
-    const dummyResult = {
-      skinCondition: 'Dry skin',
-      recommendedProducts: [
-        { id: 1, name: 'Moisturizer' },
-        { id: 2, name: 'Hydrating Serum' },
-        { id: 3, name: 'Facial Oil' },
-      ],
-    };
-    setAnalysisResult(dummyResult);
+  const handleAnalysis = async () => {
+    try {
+      const formData = new FormData();
+      formData.append('image', selectedImage);
+      const response = await axios.post('http://localhost:3000/upload', formData);
+      setAnalysisResult(response.data);
+    } catch (error) {
+      console.error('Error performing analysis:', error);
+    }
   };
 
   return (
     <div>
-      <h1>Facial Analysis App</h1>
+      <h2>Facial Analysis</h2>
       <input type="file" accept="image/*" onChange={handleImageUpload} />
-      {selectedImage && (
-        <img src={selectedImage} alt="Selected" style={{ maxWidth: '300px' }} />
-      )}
+      {selectedImage && <img src={selectedImage} alt="Selected" width="300" />}
+      <button onClick={handleAnalysis} disabled={!selectedImage}>
+        Analyze
+      </button>
       {analysisResult && (
-        <Result
-          skinCondition={analysisResult.skinCondition}
-          recommendedProducts={analysisResult.recommendedProducts}
-        />
+        <div>
+          <h3>Analysis Result:</h3>
+          <p>Skin Condition: {analysisResult.skinCondition}</p>
+          <h4>Recommended Products:</h4>
+          <ul>
+            {analysisResult.recommendedProducts.map((product) => (
+              <li key={product.name}>
+                {product.name} - {product.category}
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
     </div>
   );
-}
+};
 
 export default FacialAnalysis;
