@@ -1,3 +1,9 @@
+![image](https://github.com/Nobita006/facial-analysis-app/assets/110232335/dfd72e98-f9f8-4310-a712-ff52ac01d4d2)
+
+
+![image](https://github.com/Nobita006/facial-analysis-app/assets/110232335/96193b91-43e9-4a49-93f9-c1cf349f0655)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
