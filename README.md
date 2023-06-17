@@ -1,3 +1,6 @@
+![image](https://github.com/Nobita006/facial-analysis-app/assets/110232335/4cfd74b7-5bcc-47f1-9a1b-6283720362dc)
+
+
 ![image](https://github.com/Nobita006/facial-analysis-app/assets/110232335/dfd72e98-f9f8-4310-a712-ff52ac01d4d2)
 
 
