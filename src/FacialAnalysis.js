@@ -5,39 +5,64 @@ const FacialAnalysis = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [analysisResult, setAnalysisResult] = useState(null);
 
-  const handleImageUpload = (event) => {
-    const file = event.target.files[0];
-    setSelectedImage(URL.createObjectURL(file));
-  };
+  const handleUpload = async (event) => {
+    event.preventDefault();
 
-  const handleAnalysis = async () => {
+    const formData = new FormData();
+    formData.append('image', selectedImage);
+
     try {
-      const formData = new FormData();
-      formData.append('image', selectedImage);
-      const response = await axios.post('http://localhost:3000/upload', formData);
+      const response = await axios.post('/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
       setAnalysisResult(response.data);
     } catch (error) {
-      console.error('Error performing analysis:', error);
+      console.error('Error uploading image:', error);
     }
   };
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    setSelectedImage(file);
+  };
+
+  const renderImagePreview = () => {
+    if (!selectedImage) {
+      return null;
+    }
+  
+    return (
+      <div className="image-preview">
+        <img
+          src={URL.createObjectURL(selectedImage)}
+          alt="Preview"
+          style={{ width: '300px', height: '300px' }}
+        />
+      </div>
+    );
+  };
+  
 
   return (
     <div>
       <h2>Facial Analysis</h2>
-      <input type="file" accept="image/*" onChange={handleImageUpload} />
-      {selectedImage && <img src={selectedImage} alt="Selected" width="300" />}
-      <button onClick={handleAnalysis} disabled={!selectedImage}>
-        Analyze
-      </button>
+      <form onSubmit={handleUpload}>
+        <input type="file" accept="image/*" onChange={handleImageChange} />
+        <button type="submit">Upload</button>
+      </form>
+      {renderImagePreview()}
       {analysisResult && (
-        <div>
-          <h3>Analysis Result:</h3>
+        <div className="analysis-result">
+          <h2>Analysis Result:</h2>
           <p>Skin Condition: {analysisResult.skinCondition}</p>
-          <h4>Recommended Products:</h4>
+          <h3>Recommended Products:</h3>
           <ul>
             {analysisResult.recommendedProducts.map((product) => (
               <li key={product.name}>
-                {product.name} - {product.category}
+                <strong>{product.name}</strong> - {product.category}
               </li>
             ))}
           </ul>

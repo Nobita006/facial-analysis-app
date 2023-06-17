@@ -1,42 +1,36 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const multer = require('multer');
+const mongoose = require('mongoose');
 
+// Create the Express application
 const app = express();
-const port = 3000;
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost/beauty_products', {
+mongoose.connect('mongodb://localhost:27017/beauty_products', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-
-// Define the product schema
-const productSchema = new mongoose.Schema({
-  name: String,
-  category: String,
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once('open', () => {
+  console.log('Connected to MongoDB');
 });
 
-const Product = mongoose.model('Product', productSchema);
-
-// Configure multer for file uploads
+// Configure Multer for file uploads
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'uploads/');
-  },
+  destination: './uploads',
   filename: (req, file, cb) => {
     cb(null, file.originalname);
   },
 });
-
 const upload = multer({ storage });
 
-// Define the route for uploading an image
+// Define the route for image uploads and analysis
 app.post('/upload', upload.single('image'), (req, res) => {
-  const { filename } = req.file;
-  // Perform analysis on the uploaded image and extract features
+  // Image upload and analysis logic
+  // ...
 
-  // Replace the dummy result with the actual analysis result
+  // Example analysis result
   const analysisResult = {
     skinCondition: 'Dry skin',
     recommendedProducts: [
@@ -46,26 +40,11 @@ app.post('/upload', upload.single('image'), (req, res) => {
     ],
   };
 
-  // Save the analysis result to the database
-  const productPromises = analysisResult.recommendedProducts.map(
-    (productData) => {
-      const product = new Product(productData);
-      return product.save();
-    }
-  );
-
-  Promise.all(productPromises)
-    .then(() => {
-      console.log('Products saved to the database');
-      res.json(analysisResult);
-    })
-    .catch((error) => {
-      console.error('Error saving products to the database:', error);
-      res.status(500).json({ error: 'Failed to save products' });
-    });
+  res.json(analysisResult);
 });
 
 // Start the server
+const port = 3000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

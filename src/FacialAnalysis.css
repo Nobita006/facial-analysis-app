@@ -1,0 +1,80 @@
+.facial-analysis {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .upload-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  input[type="file"] {
+    margin-right: 10px;
+  }
+  
+  button {
+    padding: 8px 16px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .analysis-result {
+    margin-top: 20px;
+  }
+  
+  .analysis-result h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .analysis-result p {
+    margin-bottom: 10px;
+  }
+  
+  .analysis-result h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  li {
+    margin-bottom: 5px;
+  }
+  
+  .dark {
+    background-color: #333;
+    color: white;
+  }
+  
+  .dark-mode-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  label {
+    margin-right: 5px;
+    font-weight: bold;
+  }
+  
+  input[type="checkbox"] {
+    cursor: pointer;
+  }
+  
+  .image-preview {
+    margin-top: 20px;
+  }
+  
