@@ -1,0 +1,4 @@
+fastai
+scikit-image
+openpyxl
+pandas
