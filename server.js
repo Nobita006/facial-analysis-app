@@ -16,6 +16,16 @@ db.once('open', () => {
   console.log('Connected to MongoDB');
 });
 
+// Create a schema for the product data
+const productSchema = new mongoose.Schema({
+  product_image: String,
+  product_link: String,
+  class: String,
+});
+
+// Create a model based on the schema
+const Product = mongoose.model('Product', productSchema);
+
 // Configure Multer for file uploads
 const storage = multer.diskStorage({
   destination: './uploads',
@@ -26,8 +36,8 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // Define the route for image uploads and analysis
-app.post('/upload', upload.single('image'), (req, res) => {
-  // Image upload and analysis logic
+app.post('/upload', upload.single('image'), async (req, res) => {
+  // Image analysis logic (Replace this with your actual ML analysis)
   // ...
 
   // Example analysis result
@@ -40,7 +50,24 @@ app.post('/upload', upload.single('image'), (req, res) => {
     ],
   };
 
-  res.json(analysisResult);
+  // Fetch top 3 product recommendations from MongoDB
+  const top3Products = await Product.find({ class: analysisResult.skinCondition })
+    .limit(3)
+    .exec();
+
+  // Extract product image URLs and links
+  const productImages = top3Products.map((product) => product.product_image);
+  const productLinks = top3Products.map((product) => product.product_link);
+
+  // Prepare the final response
+  const finalResponse = {
+    skinCondition: analysisResult.skinCondition,
+    recommendedProducts: analysisResult.recommendedProducts,
+    productImages,
+    productLinks,
+  };
+
+  res.json(finalResponse);
 });
 
 // Start the server

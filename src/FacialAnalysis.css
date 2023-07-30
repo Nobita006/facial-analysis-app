@@ -77,4 +77,19 @@
   .image-preview {
     margin-top: 20px;
   }
+
+  .FacialAnalysis {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 70vh; /* Set the height of the container to fill the viewport */
+  }
   
+  .preview-image {
+    max-width: 400px;
+    max-height: 400px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+  }

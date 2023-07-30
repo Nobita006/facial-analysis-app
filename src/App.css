@@ -92,7 +92,7 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-  transform: translateX(17px);
+  transform: translateX(16px);
 }
 
 .slider.round {
@@ -102,4 +102,3 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
-

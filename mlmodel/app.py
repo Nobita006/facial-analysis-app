@@ -1,49 +1,67 @@
 from flask import Flask, request, jsonify
-from fastai.vision.all import load_learner, PILImage
 from flask_cors import CORS
+from fastai.vision.all import *
+import pandas as pd
+import logging
+
 
 app = Flask(__name__)
 CORS(app)
-
-def preprocess_image(image):
-    img = PILImage.create(image)
-    img_resized = img.resize((512, 512))
-    img_resized = img_resized.convert("RGB")
-    return img_resized
-
-try:
-    # Add debug statements to check model loading
-    print("Loading the model...")
+def load_model():
     learn = load_learner('export.pkl')
-    print("Model loaded successfully.")
-except Exception as e:
-    print("Error loading the model:", e)
-    exit()
+    return learn
 
-def run_inference(image):
+def get_labels(learner):
+    return learner.dls.vocab
+
+def add_cors_headers(response):
+    response.headers['Access-Control-Allow-Origin'] = '*'  # Allow requests from any domain
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    return response
+
+def predict_image(img_path, learner):
+    img = PILImage.create(img_path)
+    pred, pred_idx, probs = learner.predict(img)
+    labels = get_labels(learner)
+    predictions = {labels[i]: float(probs[i]) for i in range(len(labels))}
+    return predictions
+
+def load_recommendations():
+    df = pd.read_excel("recommendation.xlsx")
+    return df
+
+@app.route('/predict', methods=['POST'])
+def predict():
     try:
-        img_tensor = preprocess_image(image)
-        _, pred_idx, probs = learn.predict(img_tensor)
-        labels = learn.dls.vocab
-        predictions = {labels[i]: float(probs[i]) for i in range(len(labels))}
-        return predictions
+        print(request.files)  # Check the files received in the request
+        print(request.headers)
+        # Load the model and recommendations
+        learner = load_model()
+        df = load_recommendations()
+
+        # Get the image from the POST request
+        image_file = request.files['image']
+        img_path = 'temp.jpg'  # Save the image temporarily
+        image_file.save(img_path)
+
+        # Perform the prediction using the loaded model
+        predictions = predict_image(img_path, learner)
+
+        # Remove the temporarily saved image
+        os.remove(img_path)
+
+        # Return the prediction as a JSON response
+        response = jsonify({'predictions': predictions})
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        response.headers['Content-Type'] = 'application/json'
+        return response
     except Exception as e:
-        print("Error during inference:", e)
-        raise e  # Reraise the exception to return a detailed error message to the client
+        # Log the error message
+        logging.error(str(e))
+        response = jsonify({'error': str(e)})
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        response.headers['Content-Type'] = 'application/json'
+        return response
 
-
-@app.route("/upload", methods=["POST"])
-def upload():
-    if "image" not in request.files:
-        return jsonify(error="No image file found"), 400
-
-    image = request.files["image"]
-
-    try:
-        predictions = run_inference(image)
-        return jsonify(predictions)
-    except Exception as e:
-        return jsonify(error="Error during inference: {}".format(e)), 500
-
-if __name__ == "__main__":
-    app.run()
+if __name__ == '__main__':
+    app.run(debug=True)
