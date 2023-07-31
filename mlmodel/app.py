@@ -3,13 +3,19 @@ from flask_cors import CORS
 from fastai.vision.all import *
 import pandas as pd
 import logging
-
+import json
 
 app = Flask(__name__)
 CORS(app)
+
 def load_model():
     learn = load_learner('export.pkl')
     return learn
+
+def load_recommendations():
+    with open('recommendation.json') as f:
+        recommendations = json.load(f)
+    return recommendations
 
 def get_labels(learner):
     return learner.dls.vocab
@@ -26,18 +32,12 @@ def predict_image(img_path, learner):
     predictions = {labels[i]: float(probs[i]) for i in range(len(labels))}
     return predictions
 
-def load_recommendations():
-    df = pd.read_excel("recommendation.xlsx")
-    return df
-
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
-        print(request.files)  # Check the files received in the request
-        print(request.headers)
         # Load the model and recommendations
         learner = load_model()
-        df = load_recommendations()
+        recommendations = load_recommendations()
 
         # Get the image from the POST request
         image_file = request.files['image']
@@ -50,13 +50,15 @@ def predict():
         # Remove the temporarily saved image
         os.remove(img_path)
 
-        # Return the prediction as a JSON response
-        response = jsonify({'predictions': predictions})
+        # Get the corresponding recommendations for each prediction
+        recommended_products = {condition: recommendations.get(condition, []) for condition in predictions}
+
+        # Return the prediction as a JSON response with recommendations
+        response = jsonify({'predictions': predictions, 'recommendations': recommended_products})
         response.headers.add("Access-Control-Allow-Origin", "*")
         response.headers['Content-Type'] = 'application/json'
         return response
     except Exception as e:
-        # Log the error message
         logging.error(str(e))
         response = jsonify({'error': str(e)})
         response.headers.add("Access-Control-Allow-Origin", "*")

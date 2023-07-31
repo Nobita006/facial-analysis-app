@@ -7,10 +7,13 @@ function FacialAnalysis() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewURL, setPreviewURL] = useState(null);
   const [predictions, setPredictions] = useState(null);
-  const [recommendations, setRecommendations] = useState([]);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
+    if (!file) {
+      // The user canceled the file selection, do nothing
+      return;
+    }
     setSelectedFile(file);
 
     // Create a temporary URL for image preview
@@ -35,36 +38,25 @@ function FacialAnalysis() {
       })
       .then((response) => {
         const predictions = response.data.predictions;
-        setPredictions(predictions);
-        fetchRecommendations(predictions);
+        const recommendations = response.data.recommendations;
+
+        // Sort predictions by probability in descending order
+        const sortedPredictions = Object.entries(predictions).sort(
+          (a, b) => b[1] - a[1]
+        );
+
+        // Get the top 3 predictions
+        const top3Predictions = sortedPredictions.slice(0, 3);
+
+        // Convert the top 3 predictions to an object
+        const top3PredictionsObj = Object.fromEntries(top3Predictions);
+
+        // Update the state with predictions and recommendations
+        setPredictions({ predictions: top3PredictionsObj, recommendations });
       })
       .catch((error) => {
         console.error('Error uploading image:', error);
         setPredictions(null);
-        setRecommendations([]);
-      });
-  };
-
-  const fetchRecommendations = (predictions) => {
-    // Replace "YOUR_MONGODB_CONNECTION_STRING" with your actual MongoDB connection string
-    const mongoConnectionString = 'mongodb://localhost:27017/';
-
-    // Replace "YOUR_DATABASE_NAME" and "YOUR_COLLECTION_NAME" with your actual database name and collection name
-    const databaseName = 'beauty_products';
-    const collectionName = 'products';
-
-    axios
-      .post(mongoConnectionString, {
-        databaseName,
-        collectionName,
-        predictions,
-      })
-      .then((response) => {
-        setRecommendations(response.data);
-      })
-      .catch((error) => {
-        console.error('Error fetching recommendations:', error);
-        setRecommendations([]);
       });
   };
 
@@ -79,29 +71,50 @@ function FacialAnalysis() {
 
       {predictions && (
         <div className="predictions">
-          <h3>Face Condition Predictions:</h3>
-          {Object.entries(predictions).map(([condition, probability]) => (
-            <div key={condition}>
-              <div>{condition}</div>
-              <ProgressBar now={probability * 100} label={`${(probability * 100).toFixed(2)}%`} />
-            </div>
-          ))}
-        </div>
-      )}
-
-      {recommendations.length > 0 && (
-        <div className="recommendations">
-          <h3>Recommended Solutions:</h3>
-          <ul>
-            {recommendations.map((recommendation, index) => (
-              <li key={index}>
-                <img src={recommendation.product_image} alt="Product" />
-                <a href={recommendation.product_link} target="_blank" rel="noopener noreferrer">
-                  {recommendation.class}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <h3>Face Conditions:</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Facial Condition</th>
+                <th>Probability</th>
+                <th>Recommendations</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.entries(predictions.predictions).map(
+                ([condition, probability]) => (
+                  <tr key={condition}>
+                    <td>{condition}</td>
+                    <td>
+                      <ProgressBar
+                        now={probability * 100}
+                        label={`${(probability * 100).toFixed(2)}%`}
+                      />
+                    </td>
+                    <td>
+                      {predictions.recommendations[condition].length > 0 ? (
+                        <ul className="recommendations-list">
+                          {predictions.recommendations[condition].map((product) => (
+                            <li key={product.product_name}>
+                              <a href={product.product_link} target="_blank" rel="noreferrer">
+                                <img
+                                  src={product.product_image}
+                                  alt={product.product_name}
+                                  className="product-image"
+                                />
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <span>No recommendation</span>
+                      )}
+                    </td>
+                  </tr>
+                )
+              )}
+            </tbody>
+          </table>
         </div>
       )}
     </div>
