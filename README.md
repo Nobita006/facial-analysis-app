@@ -1,11 +1,6 @@
-![image](https://github.com/Nobita006/facial-analysis-app/assets/110232335/4cfd74b7-5bcc-47f1-9a1b-6283720362dc)
+![image](https://github.com/Nobita006/facial-analysis-app/assets/110232335/71d2a820-5e03-48e2-bcee-e9b95e51821e)
 
-
-![image](https://github.com/Nobita006/facial-analysis-app/assets/110232335/dfd72e98-f9f8-4310-a712-ff52ac01d4d2)
-
-
-![image](https://github.com/Nobita006/facial-analysis-app/assets/110232335/96193b91-43e9-4a49-93f9-c1cf349f0655)
-
+![image](https://github.com/Nobita006/facial-analysis-app/assets/110232335/9fbc26ab-e451-4893-ae4b-0315311850d6)
 
 # Getting Started with Create React App
 
