@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/facial-analysis-app/static/css/main.18c3ddc4.css",
+    "main.js": "/facial-analysis-app/static/js/main.2ef38d9d.js",
+    "index.html": "/facial-analysis-app/index.html",
+    "main.18c3ddc4.css.map": "/facial-analysis-app/static/css/main.18c3ddc4.css.map",
+    "main.2ef38d9d.js.map": "/facial-analysis-app/static/js/main.2ef38d9d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.18c3ddc4.css",
+    "static/js/main.2ef38d9d.js"
+  ]
+}
