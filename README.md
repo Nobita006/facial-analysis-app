@@ -1,6 +1,32 @@
+# Al model for facial feature extraction and skin analysis. It also recommends beauty products based on analysis. (Full stack + Al-ML)
+
 ![image](https://github.com/Nobita006/facial-analysis-app/assets/110232335/71d2a820-5e03-48e2-bcee-e9b95e51821e)
 
 ![image](https://github.com/Nobita006/facial-analysis-app/assets/110232335/9fbc26ab-e451-4893-ae4b-0315311850d6)
+
+
+## Frontend:
+
+-Created a React application using Create React App.
+
+-Designed the user interface with a form for image upload and a section to display analysis results.
+
+-Implemented image upload functionality using the <input type="file"> element and FormData.
+
+-Displayed the selected image and analysis results on the frontend.
+
+## Backend:
+
+<b>recommendation.json:</b> Created a JSON file containing product recommendations for various facial conditions. The JSON structure includes product names, images, and links for each condition.
+
+<b>app.py (Flask server):</b> We set up a Flask server to handle the image prediction and provide product recommendations. The server loads a pre-trained machine learning model and a JSON file containing product recommendations. When an image is received through the '/predict' endpoint, the server predicts facial conditions, matches them with product recommendations, and sends the results back to the React app.
+
+## Integration:
+
+-Integrated the frontend and backend by making a POST request from the React application to the Flask server server.
+
+-Updated the React components to allow users to upload an image, makes a prediction for facial conditions using a Flask server, and displays the predictions along with product recommendations in a tabular form. display the analysis result and recommended products received from the server.
+
 
 # Getting Started with Create React App
 
