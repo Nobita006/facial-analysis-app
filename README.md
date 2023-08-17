@@ -1,4 +1,4 @@
-# Al model for facial feature extraction and skin analysis. It also recommends beauty products based on analysis. (Full stack + Al-ML)
+# Al model for facial feature extraction and skin analysis. It also recommends dummy beauty products based on analysis. (Full stack + Al-ML)
 
 ![image](https://github.com/Nobita006/facial-analysis-app/assets/110232335/71d2a820-5e03-48e2-bcee-e9b95e51821e)
 
