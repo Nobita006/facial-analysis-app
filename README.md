@@ -4,6 +4,10 @@
 
 ![image](https://github.com/Nobita006/facial-analysis-app/assets/110232335/9fbc26ab-e451-4893-ae4b-0315311850d6)
 
+I made an app that recommends dummy beauty products based on facial features and skin analysis. (Full stack + Al-ML).
+It uses an Al model for facial feature extraction and skin analysis.
+Frontend is done in react.
+A Flask server is set up at the backend to handle image prediction and provide product recommendations.
 
 ## Frontend:
 
