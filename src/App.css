@@ -7,7 +7,7 @@ body {
 
 .App {
   text-align: center;
-  padding: 40px;
+  padding: 20px;
   min-height: 100vh;
 }
 
@@ -17,7 +17,7 @@ body {
 }
 
 .App h1 {
-  font-size: 28px;
+  font-size: 3rem; /* Adjusted size for better responsiveness */
   margin-bottom: 20px;
 }
 
@@ -27,23 +27,30 @@ body {
 
 .App img {
   margin-bottom: 20px;
+  max-width: 100%; /* Ensure images are responsive */
+  max-height: 250px; /* Adjusted max height to fit in the container */
+  object-fit: cover; /* Cover the container area while maintaining aspect ratio */
 }
 
 .App h2 {
-  font-size: 24px;
+  font-size: 2.5rem; /* Adjusted size for better responsiveness */
   margin-bottom: 10px;
 }
 
 .App h3 {
-  font-size: 20px;
+  font-size: 1.5rem; /* Adjusted size for better responsiveness */
   margin-bottom: 10px;
 }
 
+/* Position the toggle-container in the upper right corner */
 .toggle-container {
+  position: fixed; /* Ensure it stays fixed while scrolling */
+  top: 10px;
+  right: 10px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  margin-bottom: 0px;
+  background-color: transparent; /* Transparent background */
+  z-index: 1000;
 }
 
 .toggle-container span {
@@ -88,7 +95,7 @@ body {
 }
 
 input:checked + .slider {
-  background-color: #2196f3;
+  background-color: #007bff; /* Use Bootstrap's primary color */
 }
 
 input:checked + .slider:before {

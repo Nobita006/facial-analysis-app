@@ -1,0 +1,8 @@
+flask
+flask-cors
+fastai
+pandas
+Pillow
+torch
+numpy
+scikit-learn

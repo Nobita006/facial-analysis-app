@@ -1,27 +1,28 @@
-/* Add styles for the FacialAnalysis component */
 .FacialAnalysis {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  height: 100vh; /* Set the height of the container to fill the viewport */
+  padding-top: 20px;
 }
 
-/* Style the container for the image preview */
 .image-preview {
   margin-top: 20px;
+  width: 100%;
+  max-width: 400px; /* Set a maximum width for the preview container */
+  height: auto;
 }
 
-/* Style the image preview */
 .preview-image {
   max-width: 100%; 
-  max-height: 250px;
+  max-height: 300px; /* Maintain a consistent max height */
   margin-bottom: 10px;
   border: 1px solid #ccc;
+  border-radius: 8px;
+  object-fit: cover;
 }
 
-/* Style the upload form */
 .upload-form {
   display: flex;
   align-items: center;
@@ -32,32 +33,34 @@ input[type="file"] {
   margin-right: 10px;
 }
 
-/* Style the predict button */
 button {
-  padding: 8px 16px;
+  padding: 10px 20px;
   background-color: #4caf50;
   color: white;
   border: none;
+  border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-/* Style the analysis result section */
+button:hover {
+  background-color: #45a049;
+}
+
 .analysis-result {
   margin-top: 20px;
-  width: 100%; /* Set the width of the result section to fit the container */
+  width: 100%;
   max-width: 800px;
 }
 
-/* Style the result heading */
 .analysis-result h2 {
   font-size: 24px;
   margin-bottom: 20px;
 }
 
-/* Style the prediction table */
 .predictions {
   margin-top: 20px;
-  width: 70%;
+  width: 100%;
 }
 
 .predictions table {
@@ -66,9 +69,9 @@ button {
 }
 
 .predictions th, .predictions td {
-  padding: 8px;
+  padding: 10px;
   border-bottom: 1px solid #ddd;
-  height: 25px;
+  height: 30px;
 }
 
 .predictions th {
@@ -77,17 +80,14 @@ button {
   color: #333;
 }
 
-/* Style the facial condition names */
 .predictions td:first-child {
   font-weight: bold;
 }
 
-/* Style the probability progress bar */
 .predictions .progress-bar {
   background-color: #4caf50;
 }
 
-/* Style the recommendation images */
 .predictions .recommendations-list {
   list-style-type: none;
   padding: 0;
@@ -98,7 +98,7 @@ button {
 
 .predictions .recommendations-list li {
   margin-bottom: 10px;
-  width: calc(33% - 20px); /* Make the images fit in a row with some space between */
+  width: calc(33% - 20px); /* Ensure the images fit within the row */
   text-align: center;
 }
 
@@ -108,99 +108,46 @@ button {
 
 .predictions .recommendations-list li img {
   max-width: 100%;
-  max-height: 100px; /* Limit the height of the images to fit in the row */
+  max-height: 100px;
   border: 1px solid #ccc;
   border-radius: 5px;
   transition: transform 0.3s ease;
 }
 
 .predictions .recommendations-list li img:hover {
-  transform: scale(1.1); /* Add a slight scale effect on hover */
+  transform: scale(1.1);
 }
 
-/* Style the dark mode toggle */
-.dark-mode-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-label {
-  margin-right: 5px;
-  font-weight: bold;
-}
-
-input[type="checkbox"] {
-  cursor: pointer;
-}
-
-/* Add styles for the dark mode */
+/* Add dark mode styling */
 body.dark-mode {
   background-color: #333;
   color: #fff;
 }
 
-.dark-mode-toggle label {
-  color: #fff;
-}
-
-.dark-mode-toggle input[type="checkbox"] {
-  appearance: none;
-  width: 40px;
-  height: 20px;
-  border-radius: 10px;
-  background-color: #ccc;
-  position: relative;
-  cursor: pointer;
-}
-
-.dark-mode-toggle input[type="checkbox"]:checked {
-  background-color: #4caf50;
-}
-
-.dark-mode-toggle input[type="checkbox"]::before {
-  content: '';
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background-color: #fff;
-  top: 1px;
-  left: 1px;
-  transition: transform 0.3s ease;
-}
-
-.dark-mode-toggle input[type="checkbox"]:checked::before {
-  transform: translateX(20px);
-}
-
-/* Style the facial analysis component for dark mode */
 .FacialAnalysis.dark-mode {
   background-color: #1c1c1c;
   color: #fff;
 }
 
-/* Style the image preview for dark mode */
 .preview-image {
   border: 1px solid #fff;
 }
 
-/* Style the recommendation images for dark mode */
 .predictions .recommendations-list li img {
   border: 1px solid #fff;
 }
 
 .predictions th {
-  background-color: #f2f2f2;
+  background-color: #555;
+  color: #fff;
 }
 
 .predictions tbody tr:hover {
-  background-color: #f2f2f2;
+  background-color: #444;
 }
 
 .predictions td {
-  white-space: nowrap; /* Prevent text wrapping in table cells */
+  white-space: nowrap;
 }
 
 .progressBarContainer {
@@ -213,21 +160,20 @@ body.dark-mode {
   margin-left: 10px;
 }
 
-/* Add styles for recommendation images */
 .recommendation-images {
   display: flex;
-  justify-content: space-around; /* Ensure uniform gaps between images */
-  flex-wrap: wrap; /* Allow images to wrap to the next line if necessary */
+  justify-content: space-around;
+  flex-wrap: wrap;
   margin-top: 40px;
 }
 
 .recommendation-images img {
   max-width: 150px;
   max-height: 150px;
-  margin: 20px; /* Add a small margin to create gaps between images */
+  margin: 20px;
 }
 
-/* Add styles for dark mode */
+/* Dark mode styling */
 body.dark-mode {
   background-color: #333;
   color: #fff;
@@ -236,9 +182,5 @@ body.dark-mode {
 .dark-mode-toggle label {
   margin-right: 5px;
   font-weight: bold;
-  color: #fff; /* Change the color of the dark mode label */
-}
-
-.dark-mode-toggle input[type="checkbox"] {
-  cursor: pointer;
+  color: #fff;
 }
