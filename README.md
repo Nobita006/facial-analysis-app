@@ -1,9 +1,19 @@
 # Al model for facial feature extraction and skin analysis. It also recommends dummy beauty products based on analysis. (Full stack + Al-ML)
 
-![image](https://github.com/Nobita006/facial-analysis-app/assets/110232335/71d2a820-5e03-48e2-bcee-e9b95e51821e)
+## Screenshots
 
-![image](https://github.com/Nobita006/facial-analysis-app/assets/110232335/9fbc26ab-e451-4893-ae4b-0315311850d6)
+1. 
+![image](https://github.com/user-attachments/assets/88abaa94-59f4-48ed-8ecb-8e3f210fd5f9)
 
+
+2. 
+![image](https://github.com/user-attachments/assets/57ad6ae0-3b98-494a-99ab-5c0f2ff7b590)
+
+
+I made an app that recommends dummy beauty products based on facial features and skin analysis. (Full stack + Al-ML).
+It uses an Al model for facial feature extraction and skin analysis.
+Frontend is done in react.
+A Flask server is set up at the backend to handle image prediction and provide product recommendations.
 
 ## Frontend:
 
@@ -17,9 +27,9 @@
 
 ## Backend:
 
-<b>recommendation.json:</b> Created a JSON file containing product recommendations for various facial conditions. The JSON structure includes product names, images, and links for each condition.
+-<b>recommendation.json:</b> Created a JSON file containing product recommendations for various facial conditions. The JSON structure includes product names, images, and links for each condition.
 
-<b>app.py (Flask server):</b> We set up a Flask server to handle the image prediction and provide product recommendations. The server loads a pre-trained machine learning model and a JSON file containing product recommendations. When an image is received through the '/predict' endpoint, the server predicts facial conditions, matches them with product recommendations, and sends the results back to the React app.
+-<b>app.py (Flask server):</b> I set up a Flask server to handle the image prediction and provide product recommendations. The server loads a pre-trained machine learning model and a JSON file containing product recommendations. When an image is received through the '/predict' endpoint, the server predicts facial conditions, matches them with product recommendations, and sends the results back to the React app.
 
 ## Integration:
 
@@ -68,33 +78,3 @@ If you aren't satisfied with the build tool and configuration choices, you can `
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
