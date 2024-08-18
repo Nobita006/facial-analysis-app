@@ -1,5 +1,10 @@
 # Al model for facial feature extraction and skin analysis. It also recommends dummy beauty products based on analysis. (Full stack + Al-ML)
 
+I made an app that recommends dummy beauty products based on facial features and skin analysis. (Full stack + Al-ML).
+It uses an Al model for facial feature extraction and skin analysis.
+Frontend is done in react.
+A Flask server is set up at the backend to handle image prediction and provide product recommendations.
+
 ## Screenshots
 
 1. 
@@ -9,11 +14,6 @@
 2. 
 ![image](https://github.com/user-attachments/assets/57ad6ae0-3b98-494a-99ab-5c0f2ff7b590)
 
-
-I made an app that recommends dummy beauty products based on facial features and skin analysis. (Full stack + Al-ML).
-It uses an Al model for facial feature extraction and skin analysis.
-Frontend is done in react.
-A Flask server is set up at the backend to handle image prediction and provide product recommendations.
 
 ## Frontend:
 
