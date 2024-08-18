@@ -14,6 +14,13 @@ A Flask server is set up at the backend to handle image prediction and provide p
 2. 
 ![image](https://github.com/user-attachments/assets/57ad6ae0-3b98-494a-99ab-5c0f2ff7b590)
 
+## Setup:
+
+- npm install (to install react dependencies)
+- npm start (to start react app)
+- cd .\mlmodel\
+- pip install -r requirments.txt (to install app.py dependencies)
+- Run app.py
 
 ## Frontend:
 
@@ -36,11 +43,3 @@ A Flask server is set up at the backend to handle image prediction and provide p
 -Integrated the frontend and backend by making a POST request from the React application to the Flask server server.
 
 -Updated the React components to allow users to upload an image, makes a prediction for facial conditions using a Flask server, and displays the predictions along with product recommendations in a tabular form. display the analysis result and recommended products received from the server.
-
-## Setup:
-
-- npm install (to install react dependencies)
-- npm start (to start react app)
-- cd .\mlmodel\
-- pip install -r requirments.txt (to install app.py dependencies)
-- Run app.py
