@@ -38,6 +38,44 @@ A Flask server is set up at the backend to handle image prediction and provide p
 
 -<b>app.py (Flask server):</b> I set up a Flask server to handle the image prediction and provide product recommendations. The server loads a pre-trained machine learning model and a JSON file containing product recommendations. When an image is received through the '/predict' endpoint, the server predicts facial conditions, matches them with product recommendations, and sends the results back to the React app.
 
+## AI model:
+
+#### **1. Setup and Initialization**
+- **Environment Setup:**
+  - The notebook begins by installing and importing the necessary packages, particularly `fastbook` and `fastai`, which are essential for building and training machine learning models in computer vision tasks.
+  
+- **Library Imports:**
+  - The notebook imports various modules from the `fastai.vision` package, which are used for image processing, data augmentation, and model training.
+
+#### **2. Data Collection**
+- **Skin Problem Categories:**
+  - A list of skin conditions is defined, which includes common issues like dark circles, oily skin, acne, etc. These categories will be used to gather images and label them accordingly.
+  
+- **Image Downloading:**
+  - Images related to the defined skin conditions are searched and downloaded using DuckDuckGo’s image search API. These images are stored in a structured directory, categorized by skin condition.
+
+#### **3. Data Preparation**
+- **Image Verification:**
+  - After downloading, the images are verified to ensure they are not corrupted. Any invalid images are removed to maintain a clean dataset.
+  
+- **DataBlock Definition:**
+  - A `DataBlock` is defined to handle the data pipeline. It includes configurations for loading images, splitting the dataset into training and validation sets, labeling images based on their directory names, and applying image transformations like resizing.
+
+- **Data Loaders:**
+  - The `DataBlock` is instantiated to create data loaders (`dls`). These data loaders are responsible for efficiently loading the data during the training process.
+
+#### **4. Model Training**
+- **Data Augmentation:**
+  - Further data augmentations are applied, including random resized cropping and other image transformations, to make the model more robust to variations in the input data.
+  
+- **Model Definition and Training:**
+  - A convolutional neural network (CNN) model is defined using the `cnn_learner` function with a pre-trained ResNet50 architecture. The model is fine-tuned on the dataset for several epochs to learn the features corresponding to different skin conditions.
+
+#### **5. Model Export**
+- **Model Export:**
+  - After training, the model is exported using the `learn.export()` function. This creates an `export.pkl` file containing the trained model, which can be used for inference on new data without needing to retrain.
+
+
 ## Integration:
 
 -Integrated the frontend and backend by making a POST request from the React application to the Flask server server.
