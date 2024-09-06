@@ -82,6 +82,6 @@ A Flask server is set up at the backend to handle image prediction and provide p
 
 ## Integration:
 
--Integrated the frontend and backend by making a POST request from the React application to the Flask server server.
+- Integrated the frontend and backend by making a POST request from the React application to the Flask server server.
 
--Updated the React components to allow users to upload an image, makes a prediction for facial conditions using a Flask server, and displays the predictions along with product recommendations in a tabular form. display the analysis result and recommended products received from the server.
+- Updated the React components to allow users to upload an image, makes a prediction for facial conditions using a Flask server, and displays the predictions along with product recommendations in a tabular form. display the analysis result and recommended products received from the server.
