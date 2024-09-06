@@ -16,6 +16,8 @@ A Flask server is set up at the backend to handle image prediction and provide p
 
 ## Setup:
 
+- git clone https://github.com/Nobita006/facial-analysis-app.git
+- cd facial-analysis-app/
 - npm install (to install react dependencies)
 - npm start (to start react app)
 - cd mlmodel
