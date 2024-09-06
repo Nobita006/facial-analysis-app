@@ -24,7 +24,7 @@ A Flask server is set up at the backend to handle image prediction and provide p
 - python3 -m venv venv
 - source venv/bin/activate (for linux)    .\venv\Scripts\activate (for Windows)
 - pip install -r requirments.txt (to install app.py dependencies)
-- Run app.py
+- python app.py
 
 ## Frontend:
 
