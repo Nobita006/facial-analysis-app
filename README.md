@@ -21,6 +21,8 @@ A Flask server is set up at the backend to handle image prediction and provide p
 - npm install (to install react dependencies)
 - npm start (to start react app)
 - cd mlmodel
+- python3 -m venv venv
+- source venv/bin/activate (for linux)    .\venv\Scripts\activate (for Windows)
 - pip install -r requirments.txt (to install app.py dependencies)
 - Run app.py
 
