@@ -71,7 +71,6 @@ app.post('/upload', upload.single('image'), async (req, res) => {
 });
 
 // Start the server
-const port = 3000;
-app.listen(port, () => {
+app.listen(3000, '0.0.0.0', () => {
   console.log(`Server is running on port ${port}`);
 });
