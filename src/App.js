@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import FacialAnalysis from './FacialAnalysis';
 import './App.css';
+import Chatbot from './Chatbot';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -29,6 +30,7 @@ function App() {
           </div>
         </div>
       </div>
+      <Chatbot />
     </div>
   );
 }

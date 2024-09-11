@@ -1,12 +1,34 @@
+import os
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from fastai.vision.all import *
 import pandas as pd
 import logging
 import json
+import google.generativeai as genai
 
 app = Flask(__name__)
 CORS(app)
+
+# Configure the API key for Google AI
+os.environ["GEMINI_API_KEY"] = "YOUR_GEMINI_API_KEY"  # Replace with your actual API key
+genai.configure(api_key=os.environ["GEMINI_API_KEY"])
+
+# Set up the model configuration
+generation_config = {
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "top_k": 64,
+    "max_output_tokens": 212,
+    "response_mime_type": "text/plain",
+}
+
+# Create a GenerativeModel instance
+model = genai.GenerativeModel(
+    model_name="gemini-1.5-flash",
+    generation_config=generation_config,
+    system_instruction="Provide expert and short advice on skincare routines, recommend products based on different skin types and conditions, and answer questions with a friendly and professional tone. Keep the replies very brief and precise. Also, you can ask for details to get a better understanding of the problem.",
+)
 
 def load_model():
     learn = load_learner('export.pkl')
@@ -65,5 +87,41 @@ def predict():
         response.headers['Content-Type'] = 'application/json'
         return response
 
+@app.route('/chatbot', methods=['POST'])
+def chatbot_response():
+    try:
+        # Get the user's message and conversation history from the request
+        user_input = request.json.get('message')
+        history = request.json.get('history', [])
+
+        # Ensure history is a list before processing
+        if not isinstance(history, list):
+            history = []
+
+        # Convert the history format to the required structure for the SDK
+        formatted_history = [
+            {"role": item["role"], "parts": [item["content"]]} for item in history if "role" in item and "content" in item
+        ]
+
+        # Start a new chat session with the model, including the formatted history
+        chat_session = model.start_chat(history=formatted_history)
+
+        # Send the user's message to the model
+        response = chat_session.send_message(user_input)
+
+        # Get the response text from the model
+        bot_response = response.text
+
+        # Append the user message and bot response to the history
+        history.append({"role": "user", "content": user_input})
+        history.append({"role": "model", "content": bot_response})
+
+        # Return the response and updated history to the frontend
+        return jsonify({'response': bot_response, 'history': history}), 200
+
+    except Exception as e:
+        logging.error(str(e))
+        return jsonify({'error': str(e)}), 500
+
 if __name__ == '__main__':
-    app.run(debug=False,host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0')
