@@ -8,11 +8,12 @@ A Flask server is set up at the backend to handle image prediction and provide p
 ## Screenshots
 
 1. 
-![image](https://github.com/user-attachments/assets/88abaa94-59f4-48ed-8ecb-8e3f210fd5f9)
+![screenshot-1726118427695](https://github.com/user-attachments/assets/17c06316-1f27-45b4-bd8b-1135aa03d3a1)
 
 
 2. 
-![image](https://github.com/user-attachments/assets/57ad6ae0-3b98-494a-99ab-5c0f2ff7b590)
+![screenshot-1726118711482](https://github.com/user-attachments/assets/2959972d-20b5-4884-ba24-798ba1188566)
+
 
 ## Setup:
 
