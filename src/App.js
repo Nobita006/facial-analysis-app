@@ -12,17 +12,13 @@ function App() {
 
   return (
     <div className={`App ${isDarkMode ? 'dark' : ''}`}>
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-12">
-            <div className="toggle-container d-flex justify-content-end align-items-center">
-              <span className="mr-2">Toggle Dark Mode</span>
-              <label className="switch">
-                <input type="checkbox" onChange={handleToggleDarkMode} checked={isDarkMode} />
-                <span className="slider round"></span>
-              </label>
-            </div>
-          </div>
+      <div className="container">
+        <div className="toggle-container d-flex justify-content-end align-items-center">
+          <span className="mr-2"></span>
+          <label className="switch">
+            <input type="checkbox" onChange={handleToggleDarkMode} checked={isDarkMode} />
+            <span className="slider round"></span>
+          </label>
         </div>
         <div className="row">
           <div className="col-12">

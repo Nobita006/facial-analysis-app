@@ -5,18 +5,22 @@
   justify-content: center;
   text-align: center;
   padding-top: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .image-preview {
   margin-top: 20px;
   width: 100%;
-  max-width: 400px; /* Set a maximum width for the preview container */
+  max-width: 400px;
   height: auto;
 }
 
 .preview-image {
   max-width: 100%; 
-  max-height: 300px; /* Maintain a consistent max height */
+  max-height: 300px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -31,11 +35,12 @@
 
 input[type="file"] {
   margin-right: 10px;
+  padding: 10px;
 }
 
 button {
   padding: 10px 20px;
-  background-color: #4caf50;
+  background-color: #28a745;
   color: white;
   border: none;
   border-radius: 4px;
@@ -44,7 +49,7 @@ button {
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #218838;
 }
 
 .analysis-result {
@@ -98,7 +103,7 @@ button:hover {
 
 .predictions .recommendations-list li {
   margin-bottom: 10px;
-  width: calc(33% - 20px); /* Ensure the images fit within the row */
+  width: calc(33% - 20px);
   text-align: center;
 }
 
@@ -116,71 +121,4 @@ button:hover {
 
 .predictions .recommendations-list li img:hover {
   transform: scale(1.1);
-}
-
-/* Add dark mode styling */
-body.dark-mode {
-  background-color: #333;
-  color: #fff;
-}
-
-.FacialAnalysis.dark-mode {
-  background-color: #1c1c1c;
-  color: #fff;
-}
-
-.preview-image {
-  border: 1px solid #fff;
-}
-
-.predictions .recommendations-list li img {
-  border: 1px solid #fff;
-}
-
-.predictions th {
-  background-color: #555;
-  color: #fff;
-}
-
-.predictions tbody tr:hover {
-  background-color: #444;
-}
-
-.predictions td {
-  white-space: nowrap;
-}
-
-.progressBarContainer {
-  display: flex;
-  align-items: center;
-}
-
-.progressBarContainer .progress-bar {
-  flex: 1;
-  margin-left: 10px;
-}
-
-.recommendation-images {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  margin-top: 40px;
-}
-
-.recommendation-images img {
-  max-width: 150px;
-  max-height: 150px;
-  margin: 20px;
-}
-
-/* Dark mode styling */
-body.dark-mode {
-  background-color: #333;
-  color: #fff;
-}
-
-.dark-mode-toggle label {
-  margin-right: 5px;
-  font-weight: bold;
-  color: #fff;
 }

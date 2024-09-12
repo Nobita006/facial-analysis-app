@@ -11,7 +11,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Configure the API key for Google AI
-os.environ["GEMINI_API_KEY"] = "YOUR_GEMINI_API_KEY"  # Replace with your actual API key
+os.environ["GEMINI_API_KEY"] = "AIzaSyA66mTgaASSoa6F9lXj2Zpuxx5QhkS55CM"  # Replace with your actual API key
 genai.configure(api_key=os.environ["GEMINI_API_KEY"])
 
 # Set up the model configuration

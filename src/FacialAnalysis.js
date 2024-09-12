@@ -11,12 +11,10 @@ function FacialAnalysis() {
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (!file) {
-      // The user canceled the file selection, do nothing
       return;
     }
     setSelectedFile(file);
 
-    // Create a temporary URL for image preview
     const imageURL = URL.createObjectURL(file);
     setPreviewURL(imageURL);
   };
@@ -40,18 +38,14 @@ function FacialAnalysis() {
         const predictions = response.data.predictions;
         const recommendations = response.data.recommendations;
 
-        // Sort predictions by probability in descending order
         const sortedPredictions = Object.entries(predictions).sort(
           (a, b) => b[1] - a[1]
         );
 
-        // Get the top 3 predictions
         const top3Predictions = sortedPredictions.slice(0, 3);
 
-        // Convert the top 3 predictions to an object
         const top3PredictionsObj = Object.fromEntries(top3Predictions);
 
-        // Update the state with predictions and recommendations
         setPredictions({ predictions: top3PredictionsObj, recommendations });
       })
       .catch((error) => {
@@ -63,17 +57,18 @@ function FacialAnalysis() {
   return (
     <div className="FacialAnalysis">
       <h2>Facial Feature Analysis</h2>
-      {/* Show the image preview */}
-      {previewURL && <img src={previewURL} alt="Preview" className="preview-image" />}
+      {previewURL && <img src={previewURL} alt="Preview" className="preview-image img-thumbnail" />}
 
-      <input type="file" accept="image/*" onChange={handleFileChange} />
-      <button onClick={handlePredict}>Predict</button>
+      <div className="upload-form">
+        <input type="file" accept="image/*" onChange={handleFileChange} className="form-control-file" />
+        <button onClick={handlePredict} className="btn btn-success ml-3">Predict</button>
+      </div>
 
       {predictions && (
-        <div className="predictions">
+        <div className="predictions table-responsive">
           <h3>Face Conditions:</h3>
-          <table>
-            <thead>
+          <table className="table table-bordered table-hover">
+            <thead className="thead-dark">
               <tr>
                 <th>Facial Condition</th>
                 <th>Probability</th>

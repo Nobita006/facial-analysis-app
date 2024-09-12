@@ -7,7 +7,7 @@
 
 .chatbot {
     width: 300px;
-    max-height: 400px;
+    max-height: 500px;
     border: 1px solid #ddd;
     border-radius: 10px;
     background-color: white;
@@ -24,27 +24,37 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    background-color: #f1f1f1;
 }
 
 .message.user {
     text-align: right;
-    background-color: #d1e7dd;
+    background-color: #007bff;
+    color: white;
     padding: 8px;
     border-radius: 8px;
+    margin-bottom: 5px;
 }
 
 .message.bot {
     text-align: left;
-    background-color: #f8d7da;
+    background-color: #6c757d;
+    color: white;
     padding: 8px;
     border-radius: 8px;
+    margin-bottom: 5px;
+}
+
+.input-group {
+    display: flex;
+    border-top: 1px solid #ddd;
 }
 
 input[type="text"] {
-    width: calc(100% - 50px);
+    flex-grow: 1;
     padding: 8px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 0;
 }
 
 button {
@@ -53,5 +63,5 @@ button {
     background-color: #007bff;
     color: white;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 0;
 }
