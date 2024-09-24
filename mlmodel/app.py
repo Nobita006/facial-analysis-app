@@ -2,16 +2,17 @@ import os
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from fastai.vision.all import *
-import pandas as pd
 import logging
 import json
 import google.generativeai as genai
+import boto3
+from io import BytesIO
 
 app = Flask(__name__)
 CORS(app)
 
 # Configure the API key for Google AI
-os.environ["GEMINI_API_KEY"] = "AIzaSyA66mTgaASSoa6F9lXj2Zpuxx5QhkS55CM"  # Replace with your actual API key
+os.environ["GEMINI_API_KEY"] = "AIzaSyA66mTgaASSoa6F9lXj2Zpuxx5QhkS55CM"  
 genai.configure(api_key=os.environ["GEMINI_API_KEY"])
 
 # Set up the model configuration
@@ -30,30 +31,52 @@ model = genai.GenerativeModel(
     system_instruction="Provide expert and short advice on skincare routines, recommend products based on different skin types and conditions, and answer questions with a friendly and professional tone. Keep the replies very brief and precise. Also, you can ask for details to get a better understanding of the problem.",
 )
 
+# Set up AWS S3 for image storage
+s3 = boto3.client('s3')
+BUCKET_NAME = 'facial-analysis-bucket'  # Your S3 bucket name
+
+# Load the model
 def load_model():
     learn = load_learner('export.pkl')
     return learn
 
+# Load the recommendations
 def load_recommendations():
     with open('recommendation.json') as f:
         recommendations = json.load(f)
     return recommendations
 
+# Get labels from the learner
 def get_labels(learner):
     return learner.dls.vocab
 
+# Upload image to S3
+def upload_image_to_s3(image_file):
+    img = image_file.read()
+    s3.upload_fileobj(BytesIO(img), BUCKET_NAME, 'temp.jpg')
+
+# Download image from S3
+def download_image_from_s3():
+    with BytesIO() as data:
+        s3.download_fileobj(BUCKET_NAME, 'temp.jpg', data)
+        data.seek(0)
+        img = PILImage.create(data)
+    return img
+
+# Add CORS headers
 def add_cors_headers(response):
     response.headers['Access-Control-Allow-Origin'] = '*'  # Allow requests from any domain
     response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
     return response
 
-def predict_image(img_path, learner):
-    img = PILImage.create(img_path)
+# Predict on the uploaded image
+def predict_image(img, learner):
     pred, pred_idx, probs = learner.predict(img)
     labels = get_labels(learner)
     predictions = {labels[i]: float(probs[i]) for i in range(len(labels))}
     return predictions
 
+# Predict route
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
@@ -61,32 +84,30 @@ def predict():
         learner = load_model()
         recommendations = load_recommendations()
 
-        # Get the image from the POST request
+        # Upload image to S3
         image_file = request.files['image']
-        img_path = 'temp.jpg'  # Save the image temporarily
-        image_file.save(img_path)
+        upload_image_to_s3(image_file)
 
-        # Perform the prediction using the loaded model
-        predictions = predict_image(img_path, learner)
+        # Download the image from S3 for prediction
+        img = download_image_from_s3()
 
-        # Remove the temporarily saved image
-        os.remove(img_path)
+        # Perform prediction
+        predictions = predict_image(img, learner)
 
         # Get the corresponding recommendations for each prediction
         recommended_products = {condition: recommendations.get(condition, []) for condition in predictions}
 
         # Return the prediction as a JSON response with recommendations
         response = jsonify({'predictions': predictions, 'recommendations': recommended_products})
-        response.headers.add("Access-Control-Allow-Origin", "*")
-        response.headers['Content-Type'] = 'application/json'
+        response = add_cors_headers(response)
         return response
     except Exception as e:
         logging.error(str(e))
         response = jsonify({'error': str(e)})
-        response.headers.add("Access-Control-Allow-Origin", "*")
-        response.headers['Content-Type'] = 'application/json'
+        response = add_cors_headers(response)
         return response
 
+# Chatbot response route
 @app.route('/chatbot', methods=['POST'])
 def chatbot_response():
     try:
@@ -117,11 +138,15 @@ def chatbot_response():
         history.append({"role": "model", "content": bot_response})
 
         # Return the response and updated history to the frontend
-        return jsonify({'response': bot_response, 'history': history}), 200
+        response_data = jsonify({'response': bot_response, 'history': history})
+        response_data = add_cors_headers(response_data)
+        return response_data, 200
 
     except Exception as e:
         logging.error(str(e))
-        return jsonify({'error': str(e)}), 500
+        response = jsonify({'error': str(e)})
+        response = add_cors_headers(response)
+        return response, 500
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')

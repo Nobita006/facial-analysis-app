@@ -1,0 +1,222 @@
+{
+  "DARK CIRCLES ON FACE": [
+    {
+      "product_name": "Product 1",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/CCBDC_1024x1024.jpg?v=1655188098",
+      "product_link": "https://ekaro.in/enkr20220918s15448815"
+    },
+    {
+      "product_name": "Product 2",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/youth-eternity-under-eye-cream_026aea46-8f72-4951-8095-f96f98826970.jpg?v=1622098616",
+      "product_link": "https://ekaro.in/enkr20221016s16828917"
+    },
+    {
+      "product_name": "Product 3",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/under-eye-cream.jpg?v=1622098730",
+      "product_link": "https://ekaro.in/enkr20221016s16828935"
+    }
+  ],
+  "DARK SPOTS ON FACE": [
+    {
+      "product_name": "Product A",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/under-eye-cream.jpg?v=1622098730",
+      "product_link": "https://ekaro.in/enkr20220918s15449470"
+    },
+    {
+      "product_name": "Product B",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/CCBDC_1024x1024.jpg?v=1655188098",
+      "product_link": "https://ekaro.in/enkr20221016s16829687"
+    }
+  ],
+  "HORMONAL ACNE": [
+    {
+      "product_name": "Product X",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/CCBDC_1024x1024.jpg?v=1655188098",
+      "product_link": "https://ekaro.in/enkr20220918s15449141"
+    },
+    {
+      "product_name": "Product Y",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/clarina-anti-acne-face-wash-gel_1024x1024.jpg?v=1622098637",
+      "product_link": "https://ekaro.in/enkr20221016s16829580"
+    },
+    {
+      "product_name": "Product Z",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/clarina-anti-acne-cream_1024x1024.jpg?v=1622097207",
+      "product_link": "https://ekaro.in/enkr20221016s16829589"
+    }
+  ],
+  "FOREHEAD WRINKLES": [
+    {
+      "product_name": "Product P",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/clarina-anti-acne-cream_1024x1024.jpg?v=1622097207",
+      "product_link": "https://ekaro.in/enkr20220918s15449199"
+    },
+    {
+      "product_name": "Product Q",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/anti-wrinkle-cream_f9d4812e-f2bd-4342-b240-35d4edb3f860_1024x1024.jpg?v=1622096691",
+      "product_link": "https://ekaro.in/enkr20221016s16829630"
+    }
+  ],
+  "UNDER-EYE WRINKLES": [
+    {
+      "product_name": "Product P",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/anti-wrinkle-cream_f9d4812e-f2bd-4342-b240-35d4edb3f860_1024x1024.jpg?v=1622096691",
+      "product_link": "https://ekaro.in/enkr20220918s15449199"
+    },
+    {
+      "product_name": "Product R",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/youth-eternity-under-eye-cream_026aea46-8f72-4951-8095-f96f98826970.jpg?v=1622098616",
+      "product_link": "https://ekaro.in/enkr20221016s16829634"
+    }
+  ],
+  "LARGE PORES ON FACE": [
+    {
+      "product_name": "Product S",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/youth-eternity-under-eye-cream_026aea46-8f72-4951-8095-f96f98826970.jpg?v=1622098616",
+      "product_link": "https://ekaro.in/enkr20220918s15449386"
+    },
+    {
+      "product_name": "Product T",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/GENTLE-EXFOLIATING-APRICOT-FS-50G_1024x1024.jpg?v=1663758270",
+      "product_link": "https://ekaro.in/enkr20221016s16829646"
+    }
+  ],
+  "EYE BAGS": [
+    {
+      "product_name": "Product U",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/GENTLE-EXFOLIATING-APRICOT-FS-50G_1024x1024.jpg?v=1663758270",
+      "product_link": "https://ekaro.in/enkr20220918s15449562"
+    },
+    {
+      "product_name": "Product V",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/youth-eternity-under-eye-cream_026aea46-8f72-4951-8095-f96f98826970.jpg?v=1622098616",
+      "product_link": "https://ekaro.in/enkr20221016s16829724"
+    },
+    {
+      "product_name": "Product W",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/under-eye-cream.jpg?v=1622098730",
+      "product_link": "https://ekaro.in/enkr20221016s16829742"
+    }
+  ],
+  "DRY SKIN": [
+    {
+      "product_name": "Product X",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/under-eye-cream.jpg?v=1622098730",
+      "product_link": "https://ekaro.in/enkr20220918s15449774"
+    },
+    {
+      "product_name": "Product Y",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/moisturizing-aloe-vera-face-wash-200ml_1024x1024.jpg?v=1622100689",
+      "product_link": "https://ekaro.in/enkr20221016s16829760"
+    },
+    {
+      "product_name": "Product Z",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/fresh-start-lemon-face-wash_a7ce0fdb-bd07-49a3-aa1b-5c15058c3473_1024x1024.jpg?v=1639029048",
+      "product_link": "https://ekaro.in/enkr20221016s16829767"
+    }
+  ],
+  "OILY SKIN": [
+    {
+      "product_name": "Product A",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/under-eye-cream.jpg?v=1622098730",
+      "product_link": "https://ekaro.in/enkr20220918s15449858"
+    },
+    {
+      "product_name": "Product B",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/fresh-start-lemon-face-wash_a7ce0fdb-bd07-49a3-aa1b-5c15058c3473_1024x1024.jpg?v=1639029048",
+      "product_link": "https://ekaro.in/enkr20221016s16829780"
+    },
+    {
+      "product_name": "Product C",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/fresh-start-blueberry-face-wash_1024x1024.jpg?v=1622095911",
+      "product_link": "https://ekaro.in/enkr20221016s16829786"
+    }
+  ],
+  "DULL SKIN": [
+    {
+      "product_name": "Product X",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/under-eye-cream.jpg?v=1622098730",
+      "product_link": "https://ekaro.in/enkr20220918s15450126"
+    },
+    {
+      "product_name": "Product Y",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/fresh-start-blueberry-face-wash_1024x1024.jpg?v=1622095911",
+      "product_link": "https://ekaro.in/enkr20221016s16829800"
+    },
+    {
+      "product_name": "Product Z",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/rich-cocoa-butter-body-cream.jpg?v=1622097540",
+      "product_link": "https://ekaro.in/enkr20221016s16829804"
+    }
+  ],
+  "FACE REDNESS": [
+    {
+      "product_name": "Product A",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/rich-cocoa-butter-body-cream.jpg?v=1622097540",
+      "product_link": "https://ekaro.in/enkr20220918s15450187"
+    },
+    {
+      "product_name": "Product B",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/Talekt_-_2000x2000_b96b0a2c-72a7-427b-b6cd-71b0b8e81eb8_1024x1024.jpg?v=1622097510",
+      "product_link": "https://ekaro.in/enkr20221016s16829814"
+    },
+    {
+      "product_name": "Product C",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/talekt-syrup120_1024x1024.jpg?v=1622100985",
+      "product_link": "https://ekaro.in/enkr20221016s16829825"
+    }
+  ],
+  "ROUGH TEXTURE ON FACE": [
+    {
+      "product_name": "Product X",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/talekt-syrup120_1024x1024.jpg?v=1622100985",
+      "product_link": "https://ekaro.in/enkr20220918s15450231"
+    },
+    {
+      "product_name": "Product Y",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/tan-removal-orange-face-scrub_704fc9db-4846-4a87-b6f6-36f0dcc853a3_1024x1024.jpg?v=1627445269",
+      "product_link": "https://ekaro.in/enkr20221016s16829849"
+    }
+  ],
+  "BLACKHEADS": [
+    {
+      "product_name": "Product P",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/tan-removal-orange-face-scrub_704fc9db-4846-4a87-b6f6-36f0dcc853a3_1024x1024.jpg?v=1627445269",
+      "product_link": "https://ekaro.in/enkr20221016s16829864"
+    },
+    {
+      "product_name": "Product Q",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/CLEAR-COMPL.-BRIGHT.-MULETHI-FS-50G_1024x1024.jpg?v=1663758325",
+      "product_link": "https://ekaro.in/enkr20221016s16829877"
+    },
+    {
+      "product_name": "Product R",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/Skin-protect-Shaving-gel-Neem-_-Cooling-mint_1024x1024.jpg?v=1655188102",
+      "product_link": "https://ekaro.in/enkr20221016s16829881"
+    }
+  ],
+  "RAZOR BUMPS": [
+    {
+      "product_name": "Product P",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/Skin-protect-Shaving-gel-Neem-_-Cooling-mint_1024x1024.jpg?v=1655188102",
+      "product_link": "https://ekaro.in/enkr20220918s15450498"
+    },
+    {
+      "product_name": "Product Q",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/Neem_1024x1024.jpg?v=1622099585",
+      "product_link": "https://ekaro.in/enkr20221016s16829598"
+    }
+  ],
+  "SEBACEOUS FILAMENTS": [
+    {
+      "product_name": "Product P",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/Neem_1024x1024.jpg?v=1622099585",
+      "product_link": "https://ekaro.in/enkr20220918s15450331"
+    },
+    {
+      "product_name": "Product Q",
+      "product_image": "https://cdn.shopify.com/s/files/1/0272/4714/9155/products/Skin-protect-Shaving-gel-Neem-_-Cooling-mint_1024x1024.jpg?v=1655188102",
+      "product_link": "https://ekaro.in/enkr20220918s15450331"
+    }
+  ]
+}

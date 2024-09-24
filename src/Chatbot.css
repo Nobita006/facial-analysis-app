@@ -5,6 +5,26 @@
     z-index: 1000;
 }
 
+.chatbot-toggle {
+    position: absolute;
+    top: -25px;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.collapsed {
+    top: -10px;
+}
+
 .chatbot {
     width: 300px;
     max-height: 500px;
@@ -43,6 +63,7 @@
     padding: 8px;
     border-radius: 8px;
     margin-bottom: 5px;
+    white-space: pre-wrap;  /* Ensure new lines are displayed properly */
 }
 
 .input-group {

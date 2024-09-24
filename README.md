@@ -37,6 +37,8 @@ A Flask server is set up at the backend to handle image prediction and provide p
 
 -Displayed the selected image and analysis results on the frontend.
 
+-Deployed to GitHub Pages using -> npm run deploy -- -m "Deploy React app to GitHub Pages" 
+
 ## Backend:
 
 -<b>recommendation.json:</b> Created a JSON file containing product recommendations for various facial conditions. The JSON structure includes product names, images, and links for each condition.

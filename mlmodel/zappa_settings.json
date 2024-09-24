@@ -1,0 +1,24 @@
+{
+    "dev": {
+        "app_function": "app.app",
+        "aws_region": "us-east-1",
+        "exclude": [
+            "boto3",
+            "dateutil",
+            "botocore",
+            "s3transfer",
+            "concurrent"
+        ],
+        "profile_name": null,
+        "project_name": "mlmodel",
+        "runtime": "python3.12",
+        "s3_bucket": "facial-analysis-bucket",
+        "environment_variables": {
+            "GEMINI_API_KEY": "AIzaSyA66mTgaASSoa6F9lXj2Zpuxx5QhkS55CM",
+            "S3_BUCKET_NAME": "facial-analysis-bucket"
+        },
+        "slim_handler": true,
+        "timeout_seconds": 30,
+        "keep_warm": false
+    }
+}

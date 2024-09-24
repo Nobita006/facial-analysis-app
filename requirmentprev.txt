@@ -1,0 +1,10 @@
+flask
+flask-cors
+fastai
+Pillow
+google-generativeai
+pandas
+torch
+numpy
+scikit-learn
+gunicorn

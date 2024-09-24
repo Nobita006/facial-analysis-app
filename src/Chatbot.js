@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+import ReactMarkdown from 'react-markdown';
 import './Chatbot.css';
 
 const Chatbot = () => {
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState('');
     const [history, setHistory] = useState([]);
-    
+    const [isCollapsed, setIsCollapsed] = useState(false);
+
     // Create a reference for the message end
     const messagesEndRef = useRef(null);
 
@@ -51,30 +53,44 @@ const Chatbot = () => {
         scrollToBottom();
     }, [messages]);
 
+    // Function to toggle collapse state
+    const toggleCollapse = () => {
+        setIsCollapsed(!isCollapsed);
+    };
+
     return (
         <div className="chatbot-container">
-            <div className="chatbot">
-                <div className="chatbot-messages">
-                    {messages.map((msg, index) => (
-                        <div key={index} className={`message ${msg.sender}`}>
-                            {msg.text}
-                        </div>
-                    ))}
-                    {/* Dummy div to scroll to */}
-                    <div ref={messagesEndRef} />
-                </div>
-                <div className="input-group">
-                    <input
-                        type="text"
-                        value={input}
-                        onChange={(e) => setInput(e.target.value)}
-                        onKeyPress={(e) => e.key === 'Enter' && handleSend()}
-                        className="form-control"
-                        placeholder="Type your message..."
-                    />
-                    <button onClick={handleSend} className="btn btn-primary">Send</button>
-                </div>
+            <div className={`chatbot-toggle ${isCollapsed ? 'collapsed' : ''}`} onClick={toggleCollapse}>
+                {isCollapsed ? '+' : '-'}
             </div>
+            {!isCollapsed && (
+                <div className="chatbot">
+                    <div className="chatbot-messages">
+                        {messages.map((msg, index) => (
+                            <div key={index} className={`message ${msg.sender}`}>
+                                {msg.sender === 'bot' ? (
+                                    <ReactMarkdown>{msg.text}</ReactMarkdown>  // Markdown rendering for bot messages
+                                ) : (
+                                    msg.text
+                                )}
+                            </div>
+                        ))}
+                        {/* Dummy div to scroll to */}
+                        <div ref={messagesEndRef} />
+                    </div>
+                    <div className="input-group">
+                        <input
+                            type="text"
+                            value={input}
+                            onChange={(e) => setInput(e.target.value)}
+                            onKeyPress={(e) => e.key === 'Enter' && handleSend()}
+                            className="form-control"
+                            placeholder="Type your message..."
+                        />
+                        <button onClick={handleSend} className="btn btn-primary">Send</button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

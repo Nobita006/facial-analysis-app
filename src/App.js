@@ -15,10 +15,10 @@ function App() {
       <div className="container">
         <div className="toggle-container d-flex justify-content-end align-items-center">
           <span className="mr-2"></span>
-          <label className="switch">
+          {/* <label className="switch">
             <input type="checkbox" onChange={handleToggleDarkMode} checked={isDarkMode} />
             <span className="slider round"></span>
-          </label>
+          </label> */}
         </div>
         <div className="row">
           <div className="col-12">

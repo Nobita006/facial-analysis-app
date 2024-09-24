@@ -1,25 +1,17 @@
 .FacialAnalysis {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  text-align: center;
-  padding-top: 20px;
+  align-items: center;
+  min-height: 100vh;
   background-color: #ffffff;
-  border-radius: 10px;
-  padding: 20px;
+}
+
+.analysis-card {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.image-preview {
-  margin-top: 20px;
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-}
-
 .preview-image {
-  max-width: 100%; 
+  max-width: 100%;
   max-height: 300px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
@@ -52,17 +44,6 @@ button:hover {
   background-color: #218838;
 }
 
-.analysis-result {
-  margin-top: 20px;
-  width: 100%;
-  max-width: 800px;
-}
-
-.analysis-result h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
 .predictions {
   margin-top: 20px;
   width: 100%;
@@ -76,7 +57,6 @@ button:hover {
 .predictions th, .predictions td {
   padding: 10px;
   border-bottom: 1px solid #ddd;
-  height: 30px;
 }
 
 .predictions th {
