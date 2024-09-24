@@ -21,6 +21,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-/mlmodel/my_env
 /mlmodel/venv
 /mlmodel/__pycache__
+/mlmodel-local/venv
+/mlmodel-local/__pycache__
