@@ -34,7 +34,7 @@ function FacialAnalysis() {
     formData.append('image', selectedFile);
 
     axios
-      .post('https://sayan.work.gd/predict', formData, {
+      .post('http://sayan.work.gd/predict', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
