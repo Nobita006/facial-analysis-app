@@ -21,7 +21,7 @@ const Chatbot = () => {
         const newHistory = Array.isArray(history) ? [...history, { role: 'user', content: input }] : [{ role: 'user', content: input }];
 
         try {
-            const response = await axios.post('http://15.206.67.239:8000/chatbot', {
+            const response = await axios.post('https://sayan.work.gd/chatbot', {
                 message: input,
                 history: newHistory,
             });
