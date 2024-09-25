@@ -21,7 +21,7 @@ const Chatbot = () => {
         const newHistory = Array.isArray(history) ? [...history, { role: 'user', content: input }] : [{ role: 'user', content: input }];
 
         try {
-            const response = await axios.post('http://localhost:5000/chatbot', {
+            const response = await axios.post('http://15.206.67.239:8000/chatbot', {
                 message: input,
                 history: newHistory,
             });
@@ -58,10 +58,25 @@ const Chatbot = () => {
         setIsCollapsed(!isCollapsed);
     };
 
+    const upArrow = (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 19L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5 12L12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    );
+    
+    const downArrow = (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 5L12 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5 12L12 19L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    );
+    
+
     return (
         <div className="chatbot-container">
             <div className={`chatbot-toggle ${isCollapsed ? 'collapsed' : ''}`} onClick={toggleCollapse}>
-                {isCollapsed ? '+' : '-'}
+                {isCollapsed ? upArrow : downArrow}
             </div>
             {!isCollapsed && (
                 <div className="chatbot">

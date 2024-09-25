@@ -19,6 +19,7 @@
         },
         "slim_handler": true,
         "timeout_seconds": 30,
+        "memory_size": 512,
         "keep_warm": false
     }
 }

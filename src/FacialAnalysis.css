@@ -38,6 +38,9 @@ button {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  white-space: nowrap; /* Prevent text wrapping */
+  text-align: center; /* Ensure text is centered */
+  min-width: 120px; /* Set a minimum width to maintain button size */
 }
 
 button:hover {

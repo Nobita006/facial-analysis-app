@@ -12,8 +12,8 @@ app = Flask(__name__)
 CORS(app)
 
 # Configure the API key for Google AI
-os.environ["GEMINI_API_KEY"] = "AIzaSyA66mTgaASSoa6F9lXj2Zpuxx5QhkS55CM"  
-genai.configure(api_key=os.environ["GEMINI_API_KEY"])
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+genai.configure(api_key=GEMINI_API_KEY)
 
 # Set up the model configuration
 generation_config = {
@@ -31,19 +31,22 @@ model = genai.GenerativeModel(
     system_instruction="Provide expert and short advice on skincare routines, recommend products based on different skin types and conditions, and answer questions with a friendly and professional tone. Keep the replies very brief and precise. Also, you can ask for details to get a better understanding of the problem.",
 )
 
-# Set up AWS S3 for image storage
+# Set up AWS S3 for model and recommendation storage
 s3 = boto3.client('s3')
-BUCKET_NAME = 'facial-analysis-bucket'  # Your S3 bucket name
+BUCKET_NAME = os.environ.get('S3_BUCKET_NAME', 'facial-analysis-bucket')
 
-# Load the model
+# Load the model from S3
 def load_model():
-    learn = load_learner('export.pkl')
+    model_file = BytesIO()
+    s3.download_fileobj(BUCKET_NAME, 'export.pkl', model_file)
+    model_file.seek(0)
+    learn = load_learner(model_file)
     return learn
 
-# Load the recommendations
+# Load the recommendations from S3
 def load_recommendations():
-    with open('recommendation.json') as f:
-        recommendations = json.load(f)
+    obj = s3.get_object(Bucket=BUCKET_NAME, Key='recommendation.json')
+    recommendations = json.loads(obj['Body'].read().decode('utf-8'))
     return recommendations
 
 # Get labels from the learner
@@ -80,7 +83,7 @@ def predict_image(img, learner):
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
-        # Load the model and recommendations
+        # Load the model and recommendations from S3
         learner = load_model()
         recommendations = load_recommendations()
 
@@ -91,7 +94,7 @@ def predict():
         # Download the image from S3 for prediction
         img = download_image_from_s3()
 
-        # Perform prediction
+        # Perform prediction using the model
         predictions = predict_image(img, learner)
 
         # Get the corresponding recommendations for each prediction

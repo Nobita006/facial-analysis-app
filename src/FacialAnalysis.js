@@ -8,6 +8,7 @@ function FacialAnalysis() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewURL, setPreviewURL] = useState(null);
   const [predictions, setPredictions] = useState(null);
+  const [loading, setLoading] = useState(false); // New loading state
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -26,11 +27,14 @@ function FacialAnalysis() {
       return;
     }
 
+    // Set loading to true when the request starts
+    setLoading(true);
+
     const formData = new FormData();
     formData.append('image', selectedFile);
 
     axios
-      .post('http://localhost:5000/predict', formData, {
+      .post('http://15.206.67.239:8000/predict', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -48,10 +52,16 @@ function FacialAnalysis() {
         const top3PredictionsObj = Object.fromEntries(top3Predictions);
 
         setPredictions({ predictions: top3PredictionsObj, recommendations });
+
+        // Set loading to false after the response is received
+        setLoading(false);
       })
       .catch((error) => {
         console.error('Error uploading image:', error);
         setPredictions(null);
+
+        // Set loading to false even if there is an error
+        setLoading(false);
       });
   };
 
@@ -68,7 +78,13 @@ function FacialAnalysis() {
 
           <div className="upload-form">
             <input type="file" accept="image/*" onChange={handleFileChange} className="form-control-file" />
-            <button onClick={handlePredict} className="btn btn-success ml-3">Predict</button>
+            <button 
+              onClick={handlePredict} 
+              className="btn btn-success ml-3" 
+              disabled={loading} // Disable the button while loading
+            >
+              {loading ? 'Predicting...' : 'Predict'}  {/* Button text changes based on loading state */}
+            </button>
           </div>
 
           {predictions && (

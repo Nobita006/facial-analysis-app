@@ -37,7 +37,7 @@ A Flask server is set up at the backend to handle image prediction and provide p
 
 -Displayed the selected image and analysis results on the frontend.
 
--Deployed to GitHub Pages using -> npm run deploy -- -m "Deploy React app to GitHub Pages" 
+-Deployed to GitHub Pages using -> npm run deploy -- -m "text" 
 
 ## Backend:
 
