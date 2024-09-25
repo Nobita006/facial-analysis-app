@@ -1,90 +1,124 @@
-# Al model for facial feature extraction and skin analysis. It also recommends dummy beauty products based on analysis. (Full stack + Al-ML)
+# AI Website for Facial Feature Extraction and Skin Analysis with Beauty Product Recommendations
 
-I made an app that recommends dummy beauty products based on facial features and skin analysis. (Full stack + Al-ML).
-It uses an Al model for facial feature extraction and skin analysis.
-Frontend is done in react.
-A Flask server is set up at the backend to handle image prediction and provide product recommendations.
+This application provides beauty product recommendations based on facial features and skin analysis using AI/ML. It features a frontend built with React, a Flask backend for image prediction, and a tuned AI model for generative responses to user queries. The app recommends products for skin conditions and provides users the ability to clarify any skincare-related questions.
+
+## Features
+
+- **AI-Driven Facial Feature Extraction**: Uses a machine learning model to analyze facial features and skin conditions.
+- **Beauty Product Recommendations**: Recommends beauty products based on facial analysis results.
+- **Generative AI Chatbot**: Users can ask clarifying questions about skin conditions or product recommendations, powered by a fine-tuned **"gemini-1.5-flash" generative AI** model.
+- **Bootstrap Styling**: Frontend is styled using Bootstrap for a modern, responsive design.
+- **Frontend Hosting**: Deployed on GitHub Pages for easy access.
+- **Backend Hosting**: Flask backend hosted on AWS Lightsail for handling predictions and chatbot responses.
+
+## Live Website
+
+https://nobita006.github.io/facial-analysis-app/
 
 ## Screenshots
 
 1. 
-![screenshot-1726118427695](https://github.com/user-attachments/assets/17c06316-1f27-45b4-bd8b-1135aa03d3a1)
-
+![image](https://github.com/user-attachments/assets/5f4da5d9-6f71-43a4-95fa-e221c498ca9c)
 
 2. 
-![screenshot-1726118711482](https://github.com/user-attachments/assets/2959972d-20b5-4884-ba24-798ba1188566)
+
+https://github.com/user-attachments/assets/cb6632b5-f554-4484-bd00-9e7cae9b9450
 
 
-## Setup:
+## Setup
 
-- git clone https://github.com/Nobita006/facial-analysis-app.git
-- cd facial-analysis-app/
-- npm install (to install react dependencies)
-- npm start (to start react app)
-- cd mlmodel
-- python3 -m venv venv
-- source venv/bin/activate (for linux)    or   .\venv\Scripts\activate (for Windows)
-- pip install -r requirments.txt (to install app.py dependencies)
-- python app.py   or   gunicorn -w 4 -b 0.0.0.0:5000 app:app
+Follow the instructions below to set up the project locally.
 
-## Frontend:
+1. Clone the repository:
 
--Created a React application using Create React App.
+   ```bash
+   git clone https://github.com/Nobita006/facial-analysis-app.git
+   cd facial-analysis-app/
+   ```
 
--Designed the user interface with a form for image upload and a section to display analysis results.
+2. Install React dependencies:
 
--Implemented image upload functionality using the <input type="file"> element and FormData.
+   ```bash
+   npm install
+   npm start  # To start the React app
+   ```
 
--Displayed the selected image and analysis results on the frontend.
+3. Navigate to the backend directory and set up the Python environment:
 
--Deployed to GitHub Pages using -> npm run deploy -- -m "text" 
+   ```bash
+   cd mlmodel
+   python3 -m venv venv
+   source venv/bin/activate  # For Linux or Mac
+   .\venv\Scripts\activate  # For Windows
+   ```
 
-## Backend:
+4. Install backend dependencies:
 
--<b>recommendation.json:</b> Created a JSON file containing product recommendations for various facial conditions. The JSON structure includes product names, images, and links for each condition.
+   ```bash
+   pip install -r requirements.txt
+   ```
 
--<b>app.py (Flask server):</b> I set up a Flask server to handle the image prediction and provide product recommendations. The server loads a pre-trained machine learning model and a JSON file containing product recommendations. When an image is received through the '/predict' endpoint, the server predicts facial conditions, matches them with product recommendations, and sends the results back to the React app.
+5. Start the Flask backend:
 
-## AI model:
+   ```bash
+   python app.py
+   # OR, for production:
+   gunicorn -w 4 -b 0.0.0.0:5000 app:app
+   ```
 
-#### **1. Setup and Initialization**
-- **Environment Setup:**
-  - The notebook begins by installing and importing the necessary packages, particularly `fastbook` and `fastai`, which are essential for building and training machine learning models in computer vision tasks.
+## Frontend
+
+- **React Application**: Built using Create React App.
+- **Bootstrap Styling**: Incorporated Bootstrap to improve styling and responsiveness across devices.
+- **Image Upload and Display**: Users can upload images for analysis using an `<input type="file">` element. The uploaded image and analysis results are displayed on the frontend.
+- **POST Request to Backend**: A POST request is sent from the frontend to the Flask server for image prediction.
+- **Deployed on GitHub Pages**: Deployed using `npm run deploy -- -m "Deploy message"`
+
+## Backend
+
+- **Flask API**: A Flask server handles image prediction and provides product recommendations based on skin analysis.
+- **Product Recommendation JSON**: A `recommendation.json` file stores dummy beauty product recommendations for various facial conditions, including product names, images, and links.
+- **Generative AI Integration**: Integrated the "gemini-1.5-flash" model to handle user queries related to skin analysis and product recommendations.
+  - The model has been fine-tuned to provide expert and concise advice on skincare routines, answer questions in a friendly tone, and ask for additional details when necessary.
+- **Deployed on AWS Lightsail**: The Flask server is hosted on AWS Lightsail for reliable backend performance.
+
+## AI Model
+
+### 1. **Setup and Initialization**
+
+- **Environment**: Installed necessary packages, including `fastbook` and `fastai`, to build a machine learning model for skin analysis.
   
-- **Library Imports:**
-  - The notebook imports various modules from the `fastai.vision` package, which are used for image processing, data augmentation, and model training.
+- **Library Imports**: Imported modules for image processing, data augmentation, and model training from `fastai.vision`.
 
-#### **2. Data Collection**
-- **Skin Problem Categories:**
-  - A list of skin conditions is defined, which includes common issues like dark circles, oily skin, acne, etc. These categories will be used to gather images and label them accordingly.
-  
-- **Image Downloading:**
-  - Images related to the defined skin conditions are searched and downloaded using DuckDuckGo’s image search API. These images are stored in a structured directory, categorized by skin condition.
+### 2. **Data Collection**
 
-#### **3. Data Preparation**
-- **Image Verification:**
-  - After downloading, the images are verified to ensure they are not corrupted. Any invalid images are removed to maintain a clean dataset.
-  
-- **DataBlock Definition:**
-  - A `DataBlock` is defined to handle the data pipeline. It includes configurations for loading images, splitting the dataset into training and validation sets, labeling images based on their directory names, and applying image transformations like resizing.
+- **Skin Problem Categories**: Defined various skin conditions (e.g., acne, dark circles, oily skin) to categorize the images.
+- **Image Downloading**: Used DuckDuckGo's image search API to download images related to these skin conditions.
 
-- **Data Loaders:**
-  - The `DataBlock` is instantiated to create data loaders (`dls`). These data loaders are responsible for efficiently loading the data during the training process.
+### 3. **Data Preparation**
 
-#### **4. Model Training**
-- **Data Augmentation:**
-  - Further data augmentations are applied, including random resized cropping and other image transformations, to make the model more robust to variations in the input data.
-  
-- **Model Definition and Training:**
-  - A convolutional neural network (CNN) model is defined using the `cnn_learner` function with a pre-trained ResNet50 architecture. The model is fine-tuned on the dataset for several epochs to learn the features corresponding to different skin conditions.
+- **Image Verification**: Verified the downloaded images to ensure there are no corrupted files.
+- **DataBlock Setup**: Used `DataBlock` to handle the data pipeline, including loading images, splitting data into training and validation sets, and applying transformations.
+- **DataLoaders**: Created `dls` (DataLoaders) to efficiently load the data during model training.
 
-#### **5. Model Export**
-- **Model Export:**
-  - After training, the model is exported using the `learn.export()` function. This creates an `export.pkl` file containing the trained model, which can be used for inference on new data without needing to retrain.
+### 4. **Model Training**
 
+- **Data Augmentation**: Applied image transformations (e.g., random resized cropping) to make the model more robust.
+- **Model Definition**: Used `cnn_learner` to define a convolutional neural network (CNN) model with a pre-trained ResNet50 architecture. Fine-tuned the model on the skin condition dataset.
 
-## Integration:
+### 5. **Model Export**
 
-- Integrated the frontend and backend by making a POST request from the React application to the Flask server server.
+- **Export Model**: After training, exported the model using `learn.export()`, generating an `export.pkl` file to be used for inference in the Flask server.
 
-- Updated the React components to allow users to upload an image, makes a prediction for facial conditions using a Flask server, and displays the predictions along with product recommendations in a tabular form. display the analysis result and recommended products received from the server.
+## Integration
+
+- **Frontend to Backend**: Integrated the React frontend and Flask backend using a POST request. When a user uploads an image, it is sent to the Flask backend for analysis.
+- **Chatbot Integration**: Added a generative AI chatbot that allows users to ask follow-up questions about their skin analysis and get additional product recommendations.
+- **Result Display**: The React app dynamically displays the analysis result and recommended products received from the Flask server in a tabular format.
+
+## Future Improvements
+
+- **Real Product Integration**: Replace dummy product recommendations with real beauty products and dynamic pricing.
+- **User Authentication**: Implement user accounts to save skin analysis history and personalized recommendations.
+- **Multilingual Support**: Add support for multiple languages to cater to a broader user base.
+
