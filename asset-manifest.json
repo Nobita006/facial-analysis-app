@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/facial-analysis-app/static/css/main.d023417f.css",
-    "main.js": "/facial-analysis-app/static/js/main.9f5dcfb0.js",
+    "main.js": "/facial-analysis-app/static/js/main.cfc734fd.js",
     "index.html": "/facial-analysis-app/index.html",
     "main.d023417f.css.map": "/facial-analysis-app/static/css/main.d023417f.css.map",
-    "main.9f5dcfb0.js.map": "/facial-analysis-app/static/js/main.9f5dcfb0.js.map"
+    "main.cfc734fd.js.map": "/facial-analysis-app/static/js/main.cfc734fd.js.map"
   },
   "entrypoints": [
     "static/css/main.d023417f.css",
-    "static/js/main.9f5dcfb0.js"
+    "static/js/main.cfc734fd.js"
   ]
 }
