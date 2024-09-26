@@ -220,7 +220,7 @@ function FacialAnalysis() {
                             <ul className="recommendations-list">
                               {predictions.recommendations[condition].map((product) => (
                                 <li key={product.product_name}>
-                                  <a href={product.product_link} target="_blank" rel="noreferrer">
+                                  <a target="_blank" rel="noreferrer">
                                     <img
                                       src={product.product_image}
                                       alt={product.product_name}

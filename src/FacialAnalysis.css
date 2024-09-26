@@ -1,5 +1,5 @@
 .FacialAnalysis {
-  min-height: 100vh;
+  min-height: 50vh;
   background-color: #ffffff;
 }
 
@@ -56,14 +56,10 @@
 }
 
 .predictions .recommendations-list li {
-  margin-bottom: 10px;
+  margin-top: 10px;
   width: calc(33% - 20px);
-  text-align: center;
 }
 
-.predictions .recommendations-list li a {
-  text-decoration: none;
-}
 
 .predictions .recommendations-list li img {
   max-width: 100%;
@@ -86,5 +82,5 @@
 
   .App {
     padding: 0px; /* Reduce padding for small screens */
-  }
+  }  
 }
