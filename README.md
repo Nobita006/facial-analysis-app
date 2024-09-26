@@ -15,14 +15,16 @@ This application provides beauty product recommendations based on facial feature
 
 https://nobita006.github.io/facial-analysis-app/
 
-## Screenshots
+## Screen Recordings
 
-1. 
-![image](https://github.com/user-attachments/assets/5f4da5d9-6f71-43a4-95fa-e221c498ca9c)
+1. On Big Screen
 
-2. 
+https://github.com/user-attachments/assets/09df9121-2b9d-4f87-86d3-2b7182b7b30f
 
-https://github.com/user-attachments/assets/cb6632b5-f554-4484-bd00-9e7cae9b9450
+
+2. On Small Screen
+
+https://github.com/user-attachments/assets/32c700de-4692-4915-8172-d95d9a64157f
 
 
 ## Setup
