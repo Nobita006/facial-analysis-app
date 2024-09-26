@@ -3,6 +3,7 @@ import axios from 'axios';
 import './FacialAnalysis.css';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import Card from 'react-bootstrap/Card';
+import Resizer from 'react-image-file-resizer';
 
 function FacialAnalysis() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -10,15 +11,48 @@ function FacialAnalysis() {
   const [predictions, setPredictions] = useState(null);
   const [loading, setLoading] = useState(false); // New loading state
 
-  const handleFileChange = (event) => {
+  // Resize the image while maintaining the aspect ratio
+  const resizeImage = (file, maxDimension) => {
+    return new Promise((resolve) => {
+      Resizer.imageFileResizer(
+        file,
+        maxDimension, // Max width or height (whichever is larger)
+        maxDimension, // Max height or width (aspect ratio is maintained)
+        'JPEG',       // Output format
+        70,           // Quality percentage
+        0,            // Rotation angle
+        (uri) => {
+          resolve(uri);  // Return the resized image as a Blob
+        },
+        'blob'  // Return format: blob (can also be base64)
+      );
+    });
+  };
+
+  const handleFileChange = async (event) => {
     const file = event.target.files[0];
     if (!file) {
       return;
     }
-    setSelectedFile(file);
 
-    const imageURL = URL.createObjectURL(file);
-    setPreviewURL(imageURL);
+    const image = new Image();
+    image.src = URL.createObjectURL(file);
+
+    // Wait for the image to load to get its dimensions
+    image.onload = async () => {
+      const { width, height } = image;
+
+      let resizedFile = file;
+
+      // Resize if the image dimensions exceed 1000px
+      if (width > 1000 || height > 1000) {
+        resizedFile = await resizeImage(file, 1000);
+      }
+
+      setSelectedFile(resizedFile);
+      const imageURL = URL.createObjectURL(resizedFile);
+      setPreviewURL(imageURL);
+    };
   };
 
   const handlePredict = () => {
@@ -34,7 +68,7 @@ function FacialAnalysis() {
     formData.append('image', selectedFile);
 
     axios
-      .post('http://sayan.work.gd/predict', formData, {
+      .post('https://sayan.work.gd/predict', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -47,7 +81,7 @@ function FacialAnalysis() {
           (a, b) => b[1] - a[1]
         );
 
-        const top3Predictions = sortedPredictions.slice(0, 3);
+        const top3Predictions = sortedPredictions.slice(0, 5);
 
         const top3PredictionsObj = Object.fromEntries(top3Predictions);
 
@@ -66,29 +100,47 @@ function FacialAnalysis() {
   };
 
   return (
-    <div className="FacialAnalysis">
-      <Card style={{ width: '100%' }} className="analysis-card">
-        <Card.Header>
+    <div className="FacialAnalysis d-flex justify-content-center align-items-center">
+      <Card style={{ width: '100%' }} className="analysis-card p-4">
+        <Card.Header className="text-center">
           <h2>Facial Feature Analysis</h2>
         </Card.Header>
-        <Card.Body>
+        <Card.Body className="text-center">
           {previewURL && (
-            <img src={previewURL} alt="Preview" className="preview-image img-thumbnail" />
+            <img src={previewURL} alt="Preview" className="preview-image img-thumbnail mb-4" />
           )}
 
-          <div className="upload-form">
-            <input type="file" accept="image/*" onChange={handleFileChange} className="form-control-file" />
-            <button 
-              onClick={handlePredict} 
-              className="btn btn-success ml-3" 
-              disabled={loading} // Disable the button while loading
-            >
-              {loading ? 'Predicting...' : 'Predict'}  {/* Button text changes based on loading state */}
-            </button>
+          <div className="mb-3">
+            {/* Bootstrap custom file input */}
+            <div className="input-group mb-3">
+              <div className="custom-file">
+                <input 
+                  type="file" 
+                  className="custom-file-input" 
+                  id="inputGroupFile01" 
+                  accept="image/*"
+                  capture="user"
+                  onChange={handleFileChange}
+                />
+                <label className="custom-file-label" htmlFor="inputGroupFile01">
+                  Select Face Picture
+                </label>
+              </div>
+            </div>
           </div>
 
+          <div>
+            <button 
+              onClick={handlePredict} 
+              className="btn btn-success btn-block"
+              disabled={loading} // Disable the button while loading
+            >
+              {loading ? 'Predicting...' : 'Predict'}
+            </button>
+          </div>
+          
           {predictions && (
-            <div className="predictions table-responsive">
+            <div className="predictions table-responsive mt-4">
               <h3>Face Conditions:</h3>
               <table className="table table-bordered table-hover">
                 <thead className="thead-dark">

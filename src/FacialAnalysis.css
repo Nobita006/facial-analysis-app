@@ -1,7 +1,4 @@
 .FacialAnalysis {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
   background-color: #ffffff;
 }
@@ -13,38 +10,12 @@
 .preview-image {
   max-width: 100%;
   max-height: 300px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
   border-radius: 8px;
   object-fit: cover;
 }
 
-.upload-form {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-input[type="file"] {
-  margin-right: 10px;
-  padding: 10px;
-}
-
-button {
-  padding: 10px 20px;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  white-space: nowrap; /* Prevent text wrapping */
-  text-align: center; /* Ensure text is centered */
-  min-width: 120px; /* Set a minimum width to maintain button size */
-}
-
-button:hover {
-  background-color: #218838;
+.custom-file-label::after {
+  content: "Browse";  /* Customize the 'Browse' text */
 }
 
 .predictions {
