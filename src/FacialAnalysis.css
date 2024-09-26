@@ -76,3 +76,15 @@
 .predictions .recommendations-list li img:hover {
   transform: scale(1.1);
 }
+
+@media (max-width: 768px) {
+  .text-center {
+    right: 0px; /* Adjust right margin on smaller screens */
+    top: 0px; /* Adjust top margin on smaller screens */
+    padding: 0px;
+  }
+
+  .App {
+    padding: 0px; /* Reduce padding for small screens */
+  }
+}

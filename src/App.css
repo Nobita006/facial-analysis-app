@@ -27,6 +27,22 @@ body {
   background-color: transparent;
 }
 
+.predictions table th, .predictions table td {
+  vertical-align: middle; /* Vertically center the content */
+}
+
+/* Ensure toggle-container is responsive */
+@media (max-width: 768px) {
+  .toggle-container {
+    right: 0px; /* Adjust right margin on smaller screens */
+    top: 0px; /* Adjust top margin on smaller screens */
+  }
+
+  .App {
+    padding: 0px; /* Reduce padding for small screens */
+  }
+}
+
 .switch {
   position: relative;
   display: inline-block;
