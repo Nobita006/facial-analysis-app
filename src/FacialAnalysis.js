@@ -99,6 +99,40 @@ function FacialAnalysis() {
       });
   };
 
+  // Add a new ref for the selfie input
+  const selfieInputRef = React.createRef();
+
+  // Function to trigger the hidden selfie input
+  const handleSelfieClick = () => {
+    selfieInputRef.current.click(); // Simulate a click on the hidden input
+  };
+
+  // Add another handle function for the selfie input change
+  const handleSelfieFileChange = async (event) => {
+    const file = event.target.files[0];
+    if (!file) {
+      return;
+    }
+
+    const image = new Image();
+    image.src = URL.createObjectURL(file);
+
+    image.onload = async () => {
+      const { width, height } = image;
+
+      let resizedFile = file;
+
+      // Resize if the image dimensions exceed 1000px
+      if (width > 1000 || height > 1000) {
+        resizedFile = await resizeImage(file, 1000);
+      }
+
+      setSelectedFile(resizedFile);
+      const imageURL = URL.createObjectURL(resizedFile);
+      setPreviewURL(imageURL);
+    };
+  };
+
   return (
     <div className="FacialAnalysis d-flex justify-content-center align-items-center">
       <Card style={{ width: '100%' }} className="analysis-card p-4">
@@ -118,8 +152,7 @@ function FacialAnalysis() {
                   type="file" 
                   className="custom-file-input" 
                   id="inputGroupFile01" 
-                  accept="image/*"
-                  capture="user"
+                  accept="image/*" // Allows choosing from gallery or taking a picture
                   onChange={handleFileChange}
                 />
                 <label className="custom-file-label" htmlFor="inputGroupFile01">
@@ -127,6 +160,27 @@ function FacialAnalysis() {
                 </label>
               </div>
             </div>
+          </div>
+
+          {/* Add Click Selfie button for mobile devices */}
+          <div className="mb-3 d-md-none">
+            {/* Hidden file input for selfies with capture="user" */}
+            <input 
+              ref={selfieInputRef} 
+              type="file" 
+              accept="image/*" 
+              capture="user" // Opens camera for selfie 
+              className="d-none"  // Hidden input
+              onChange={handleSelfieFileChange} 
+            />
+            
+            {/* Button that triggers the hidden input */}
+            <button 
+              className="btn btn-primary btn-block" 
+              onClick={handleSelfieClick} 
+            >
+              Click Selfie
+            </button>
           </div>
 
           <div>
