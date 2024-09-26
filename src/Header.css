@@ -1,0 +1,65 @@
+/* Style the navbar */
+.navbar {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fa; /* Light background */
+  }
+  
+  /* Style the brand name */
+  .navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #343a40; /* Dark color for brand name */
+    text-transform: uppercase; /* Optional: Uppercase styling */
+  }
+  
+  /* Add margin for small screens */
+  @media (max-width: 768px) {
+    .navbar-brand {
+      margin-left: 10px; /* Add a small left margin */
+    }
+  
+    .navbar {
+      padding: 0.5rem 1rem; /* Add padding for smaller screens */
+    }
+  
+    .navbar-toggler {
+      border: none; /* Remove border around the hamburger icon */
+    }
+  
+    .navbar-toggler-icon {
+      color: #343a40; /* Dark color for the hamburger icon */
+    }
+  
+    /* Center the nav links when the menu collapses */
+    .navbar-collapse {
+      text-align: center;
+    }
+  
+    .nav-item {
+      margin-bottom: 1rem; /* Add some space between items */
+    }
+  
+    .nav-link {
+      font-size: 1.2rem; /* Make the links larger for mobile */
+      display: block; /* Ensure links take up the full width */
+    }
+  }
+  
+  /* Normal styles for larger screens */
+  .navbar-brand:hover {
+    color: #343a40; /* Keep the color consistent when hovered */
+    text-decoration: none; /* No underline on hover */
+  }
+  
+  /* Style the nav links */
+  .nav-link {
+    color: #343a40; /* Darker text color */
+    margin-right: 1rem;
+    font-weight: 500; /* Make the text slightly bolder */
+  }
+  
+  .nav-link:hover {
+    color: #007bff; /* Optional: Add a blue hover color */
+    text-decoration: underline; /* Underline when hovered */
+  }
+  

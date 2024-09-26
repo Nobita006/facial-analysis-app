@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import FacialAnalysis from './FacialAnalysis';
 import './App.css';
 import Chatbot from './Chatbot';
+import Header from './Header'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -12,7 +13,10 @@ function App() {
   };
 
   return (
+    <div>
+      <Header />
     <div className={`App ${isDarkMode ? 'dark' : ''}`}>
+      
       <div className="container-fluid"> {/* Use container-fluid for full-width responsiveness */}
         <div className="toggle-container d-flex justify-content-end align-items-center">
           <span className="mr-2"></span>
@@ -28,6 +32,7 @@ function App() {
         </div>
       </div>
       <Chatbot />
+    </div>
     </div>
   );
 }
