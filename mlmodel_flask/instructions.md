@@ -22,6 +22,8 @@ gunicorn --bind 0.0.0.0:8000 app:app
 
 
 
+
+
 ps aux | grep gunicorn
 
 pkill gunicorn
@@ -29,6 +31,8 @@ pkill gunicorn
 sudo systemctl restart nginx
 
 sudo systemctl restart gunicorn
+
+
 
 
 sudo nano /etc/systemd/system/gunicorn.service
