@@ -1,4 +1,4 @@
-# AI Website for Facial Feature Extraction and Skin Analysis with Beauty Product Recommendations
+# AI Website for Facial Feature Analysis with a tuned Generative AI Chatbot that provides users the ability to clarify any skincare-related questions.
 
 This application provides beauty product recommendations based on facial features and skin analysis using AI/ML. It features a frontend built with React, a Flask backend for image prediction, and a tuned AI model for generative responses to user queries. The app recommends products for skin conditions and provides users the ability to clarify any skincare-related questions.
 
