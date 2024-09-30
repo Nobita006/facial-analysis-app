@@ -15,6 +15,10 @@ Upload a picture of your face or take a selfie, this application provides beauty
 
 https://nobita006.github.io/facial-analysis-app/
 
+## Demonstration
+
+https://youtu.be/cI56twvRbac?si=Ugb5XMfyLSvP2fDr
+
 ## Screen Recordings
 
 1. On Big Screen
