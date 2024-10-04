@@ -5,9 +5,15 @@ from fastai.vision.all import *
 import logging
 import json
 import google.generativeai as genai
+from pymongo import MongoClient
 
 app = Flask(__name__)
 CORS(app)
+
+# MongoDB connection
+client = MongoClient('mongodb+srv://Sayandas:Sayanat2001@cluster0.iu2x4ch.mongodb.net/')
+db = client['facialAnalysisApp']
+collection = db['recommendation']
 
 # Configure the API key for Google AI
 os.environ["GEMINI_API_KEY"] = "AIzaSyA66mTgaASSoa6F9lXj2Zpuxx5QhkS55CM"  
@@ -34,8 +40,13 @@ def load_model():
     return learn
 
 def load_recommendations():
-    with open('recommendation.json') as f:
-        recommendations = json.load(f)
+    recommendations = {}
+    # Fetch all the records from the MongoDB collection
+    data = collection.find()
+    for item in data:
+        condition = item['condition']
+        products = item['products']
+        recommendations[condition] = products
     return recommendations
 
 def get_labels(learner):
@@ -56,25 +67,19 @@ def predict_image(img_path, learner):
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
-        # Load the model and recommendations
         learner = load_model()
         recommendations = load_recommendations()
 
-        # Get the image from the POST request
         image_file = request.files['image']
-        img_path = 'temp.jpg'  # Save the image temporarily
+        img_path = 'temp.jpg'
         image_file.save(img_path)
 
-        # Perform the prediction using the loaded model
         predictions = predict_image(img_path, learner)
 
-        # Remove the temporarily saved image
         os.remove(img_path)
 
-        # Get the corresponding recommendations for each prediction
         recommended_products = {condition: recommendations.get(condition, []) for condition in predictions}
 
-        # Return the prediction as a JSON response with recommendations
         response = jsonify({'predictions': predictions, 'recommendations': recommended_products})
         response.headers.add("Access-Control-Allow-Origin", "*")
         response.headers['Content-Type'] = 'application/json'
