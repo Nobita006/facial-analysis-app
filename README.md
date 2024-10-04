@@ -1,6 +1,6 @@
-# AI Website for Facial Feature Extraction and Skin Analysis with Beauty Product Recommendations
+# AI Website for Facial Feature Analysis with a tuned Generative AI Chatbot that allows users to clarify any skincare-related questions.
 
-This application provides beauty product recommendations based on facial features and skin analysis using AI/ML. It features a frontend built with React, a Flask backend for image prediction, and a tuned AI model for generative responses to user queries. The app recommends products for skin conditions and provides users the ability to clarify any skincare-related questions.
+Upload a picture of your face or take a selfie, this application provides beauty product recommendations based on facial features and skin analysis using ML. It also provides users with the ability to clarify any skincare-related questions with the help of a fine-tuned "gemini-1.5-flash" generative AI model.
 
 ## Features
 
@@ -15,14 +15,20 @@ This application provides beauty product recommendations based on facial feature
 
 https://nobita006.github.io/facial-analysis-app/
 
-## Screenshots
+## Demonstration
 
-1. 
-![image](https://github.com/user-attachments/assets/5f4da5d9-6f71-43a4-95fa-e221c498ca9c)
+https://youtu.be/cI56twvRbac?si=Ugb5XMfyLSvP2fDr
 
-2. 
+## Screen Recordings
 
-https://github.com/user-attachments/assets/cb6632b5-f554-4484-bd00-9e7cae9b9450
+1. On Big Screen
+
+https://github.com/user-attachments/assets/09df9121-2b9d-4f87-86d3-2b7182b7b30f
+
+
+2. On Small Screen
+
+https://github.com/user-attachments/assets/32c700de-4692-4915-8172-d95d9a64157f
 
 
 ## Setup
