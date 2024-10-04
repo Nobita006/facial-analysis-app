@@ -8,7 +8,7 @@ import google.generativeai as genai
 from pymongo import MongoClient
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 # MongoDB connection
 client = MongoClient('mongodb+srv://Sayandas:Sayanat2001@cluster0.iu2x4ch.mongodb.net/')
