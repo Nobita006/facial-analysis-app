@@ -10,6 +10,7 @@ Upload a picture of your face or take a selfie, this application provides beauty
 - **Bootstrap Styling**: Frontend is styled using Bootstrap for a modern, responsive design.
 - **Frontend Hosting**: Deployed on GitHub Pages for easy access.
 - **Backend Hosting**: Flask backend hosted on AWS Lightsail for handling predictions and chatbot responses.
+- **Database**: Using MongoDB database to get recommendations and images
 
 ## Live Website
 
