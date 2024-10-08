@@ -84,7 +84,7 @@ Follow the instructions below to set up the project locally.
 ## Backend
 
 - **Flask API**: A Flask server handles image prediction and provides product recommendations based on skin analysis.
-- **Product Recommendation JSON**: A `recommendation.json` file stores dummy beauty product recommendations for various facial conditions, including product names, images, and links.
+- **MongoDB Database**: Product recommendations, including product names, images, and links for various facial conditions, are now stored and retrieved from a MongoDB database, replacing the previous `recommendation.json` file.
 - **Generative AI Integration**: Integrated the "gemini-1.5-flash" model to handle user queries related to skin analysis and product recommendations.
   - The model has been fine-tuned to provide expert and concise advice on skincare routines, answer questions in a friendly tone, and ask for additional details when necessary.
 - **Deployed on AWS Lightsail**: The Flask server is hosted on AWS Lightsail for reliable backend performance.
