@@ -68,8 +68,8 @@ function FacialAnalysis() {
     formData.append('image', selectedFile);
 
     axios
-      // .post('https://sayan.work.gd/predict', formData, {
-      .post('http://localhost:5000/predict', formData, {
+      .post('https://sayan.work.gd/predict', formData, {
+      // .post('http://localhost:5000/predict', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -77,18 +77,21 @@ function FacialAnalysis() {
       .then((response) => {
         const predictions = response.data.predictions;
         const recommendations = response.data.recommendations;
-
+    
         const sortedPredictions = Object.entries(predictions).sort(
           (a, b) => b[1] - a[1]
         );
-
-        const top3Predictions = sortedPredictions.slice(0, 5);
-
-        const top3PredictionsObj = Object.fromEntries(top3Predictions);
-
-        setPredictions({ predictions: top3PredictionsObj, recommendations });
-
-        // Set loading to false after the response is received
+    
+        // Filter predictions with a probability greater than 0.10 (10%)
+        const filteredPredictions = sortedPredictions.filter(
+          ([_, probability]) => probability > 0.10
+        );
+    
+        // Convert the filtered predictions back to an object
+        const filteredPredictionsObj = Object.fromEntries(filteredPredictions);
+    
+        setPredictions({ predictions: filteredPredictionsObj, recommendations });
+    
         setLoading(false);
       })
       .catch((error) => {
