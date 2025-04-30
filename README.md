@@ -8,8 +8,8 @@ Upload a picture of your face or take a selfie, this application provides beauty
 - **Beauty Product Recommendations**: Recommends beauty products based on facial analysis results.
 - **Generative AI Chatbot**: Users can ask clarifying questions about skin conditions or product recommendations, powered by a fine-tuned **"gemini-1.5-flash" generative AI** model.
 - **Bootstrap Styling**: Frontend is styled using Bootstrap for a modern, responsive design.
-- **Frontend Hosting**: Deployed on GitHub Pages for easy access.
-- **Backend Hosting**: Flask backend hosted on AWS Lightsail for handling predictions and chatbot responses.
+- **Frontend**: React frontend deployed on GitHub Pages for easy access.
+- **Backend**: Flask backend hosted on AWS Lightsail for handling predictions and chatbot responses.
 - **Database**: Using MongoDB database to get recommendations and images
 
 ## Live Website
