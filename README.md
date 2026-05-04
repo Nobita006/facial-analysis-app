@@ -1,6 +1,6 @@
 # AI Website for Facial Feature Analysis with a tuned Generative AI Chatbot that allows users to clarify any skincare-related questions.
 
-Upload a picture of your face or take a selfie, this application provides beauty product recommendations based on facial features and skin analysis using ML. It also provides users with the ability to clarify any skincare-related questions with the help of a fine-tuned "gemini-1.5-flash" generative AI model.
+Upload a picture of your face or take a selfie, this application provides beauty product recommendations based on facial features and skin analysis using a CNN model with ResNet50. It also provides users with the ability to clarify any skincare-related questions with the help of a fine-tuned "gemini-flash" generative AI model.
 
 ## Features
 
