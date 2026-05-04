@@ -4,7 +4,7 @@ Upload a picture of your face or take a selfie, this application provides beauty
 
 ## Features
 
-- **AI-Driven Facial Feature Extraction**: Uses a machine learning model to analyze facial features and skin conditions.
+- **AI-Driven Facial Feature Extraction**: Uses a Convolutional Neural Network model to analyze facial features and skin conditions.
 - **Beauty Product Recommendations**: Recommends beauty products based on facial analysis results.
 - **Generative AI Chatbot**: Users can ask clarifying questions about skin conditions or product recommendations, powered by a fine-tuned **"gemini-1.5-flash" generative AI** model.
 - **Bootstrap Styling**: Frontend is styled using Bootstrap for a modern, responsive design.
